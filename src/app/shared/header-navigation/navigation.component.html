@@ -1,0 +1,62 @@
+<!-- <ul class="navbar-nav mr-auto float-left">
+    <li (click)="toggleSidebar.emit()" class="nav-item m-l-10 d-block"><a
+            class="nav-link sidebartoggler text-muted waves-effect waves-dark" href="javascript:void(0);"><i
+                class="ti-menu"></i></a> </li>
+</ul> -->
+
+<!-- <ul class="navbar-nav my-lg-0 float-right">
+    <li class="nav-item dropdown" ngbDropdown placement="bottom-right">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle text-muted waves-effect waves-dark"
+            href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="assets/images/awhiz/user-svg.svg" alt="user" class="profile-pic" />
+        </a>
+        <div class="dropdown-menu-right user-dd dropdown-menu" ngbDropdownMenu>
+            <ul class="dropdown-user">
+                <li><a href="javascript:void(0);" (click)="openDialog(logoutModel,false)"><i
+                            class="fa fa-power-off"></i>
+                        Logout</a></li>
+            </ul>
+        </div>
+    </li>
+</ul> -->
+
+
+
+<a class="navbar-brand p-0" href="javascript:void(0);" [routerLink]="['/dashboard']" routerLinkActive="active">
+    <img src="assets/images/awhiz/Logo.svg" alt="homepage" />
+</a>
+<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item" [routerLink]="['/portal1']" routerLinkActive="active">
+            <a class="nav-link" href="javascript:void(0);">Portal</a>
+        </li>
+    </ul>
+</div>
+
+
+<ng-template #logoutModel>
+    <div class="aw-common-modal">
+        <div class="modal-dialog m-auto">
+            <div class="modal-content border-0">
+                <div class="modal-header">
+                    <h5 class="mb-0"><i class="fas fa-power-off"></i> Logout</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" matDialogClose>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-0">Are you sure you want to logout ?</p>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" (click)="authService.logout(true);" class="btn btn-primary btn-sm"
+                        matDialogClose>Yes</button>
+                    <button type="button" class="btn btn-secondary btn-sm" matDialogClose>No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

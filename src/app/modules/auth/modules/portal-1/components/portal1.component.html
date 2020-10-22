@@ -1,0 +1,146 @@
+<div class="card mb-1 filter-wrap">
+    <div class="card-body">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="w-100">
+                    <div class="input-group input-group-sm">
+                        <input type="text" class="form-control" [(ngModel)]="filterText" #ctrl="ngModel"
+                            (keyup)="applyFilter($event.target.value)" placeholder="Search" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-unstyled d-flex m-0 justify-content-end action-main-links">
+                    <li><a href="javascript:void(0);">
+                            <i class="fas fa-plus"></i> Create</a></li>
+                    <li><a href="javascript:void(0);"><i class="fas fa-sync-alt"></i> Refresh
+                        </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive" [hidden]="!dataSource?.data?.length">
+    <table class="table table-bordered table-striped" mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+            <td mat-cell *matCellDef="let element">{{element?.id}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">{{element?.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
+            <td mat-cell *matCellDef="let element">{{element?.description || 'N / A'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="matchCount">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Match Count</th>
+            <td mat-cell *matCellDef="let element">{{element?.matchCount || 'N / A'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef class="text-center">Actions </th>
+            <td mat-cell *matCellDef="let element">
+                <ul class="list-unstyled action-links">
+                    <li title="Update">
+                        <a href="javascript:void(0);">
+                            <i class="fas fa-edit" style="font-size: 12px;"> </i>
+                        </a>
+                    </li>
+                    <li title="Delete">
+                        <a href="javascript:void(0);"
+                            (click)="templateId = element.id; openDialog(deleteTemplateModal)">
+                            <i class="fas fa-trash-alt" style="font-size: 12px;"> </i>
+                        </a>
+                    </li>
+                </ul>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+
+<div class="pagination-wrap" [hidden]="!dataSource?.data?.length">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="page-count">
+                <label>Page Count</label>
+                <div class="drop-count">
+                    <select class="form-control form-control-sm" name="pageSize" [(ngModel)]="pageSize"
+                        (ngModelChange)="pageSizeChange()">
+                        <option *ngFor="let item of pageSizeOptions" [value]="item">
+                            {{ item }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <p class="mt-1 mb-0">{{pageIndex * pageSize + 1}} -
+                {{pageIndex == possibleIndex ? totalDataLength : currentDataLength}} of {{totalDataLength}}
+            </p>
+        </div>
+        <div class="col-md-4">
+            <div class="pagination-digit float-right">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination pagination-sm m-1">
+                        <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);" [ngClass]="{'disabled' : pageIndex == 0}"
+                                (click)="loadPreviousPage()" aria-label="Previous">
+                                <i class='fas fa-chevron-left'></i>
+                            </a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="javascript:void(0);"
+                                [ngClass]="{'disabled' : (totalDataLength == currentDataLength) || (pageIndex == possibleIndex)}"
+                                aria-label="Next" (click)="loadNextPage()">
+                                <i class='fas fa-chevron-right'></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="no-data text-center" [hidden]="dataSource?.data?.length">
+    <img src="assets/images/awhiz/robot-find.svg" />
+    <h6>No Record Found</h6>
+    <!-- <button class="btn btn-primary btn-sm" (click)="goBack()">
+        <i class="fas fa-arrow-left"></i> Go
+        Back</button> -->
+</div>
+
+
+
+<ng-template #deleteTemplateModal>
+    <div class="aw-common-modal">
+        <div class="modal-dialog m-auto">
+            <div class="modal-content border-0">
+                <div class="modal-header">
+                    <h5 class="mb-0"><i class="fas fa-trash-alt"></i> Delete Template</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" matDialogClose>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        Are you sure you want to delete this template ?
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-end">
+                    <button type="button" class="btn btn-primary btn-sm">Delete</button>
+                    <button type="button" class="btn btn-secondary btn-sm" matDialogClose>Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
