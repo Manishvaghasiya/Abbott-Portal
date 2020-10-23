@@ -55,7 +55,7 @@ export class PaginationService {
         this.router.navigate([url], {
             queryParams: {
                 index: 0,
-                size: 5
+                size: 100
             },
             queryParamsHandling: 'merge'
         });
@@ -73,7 +73,7 @@ export class PaginationService {
     verifySizeParams(pageSize: number): number {
         const pageSizeFlag = isNaN(pageSize);
         if (pageSizeFlag) {
-            return 5;
+            return 100;
         } else {
             return pageSize;
         }

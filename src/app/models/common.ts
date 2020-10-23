@@ -20,6 +20,9 @@ export interface Params {
 export interface ParamsModel {
     index: number;
     size: number;
+    param?: string;
+    start?: Date;
+    end?: Date;
     server?: string;
     folder_type?: string;
     folder_name?: string;

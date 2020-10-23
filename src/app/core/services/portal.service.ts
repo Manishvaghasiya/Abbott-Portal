@@ -11,7 +11,8 @@ export class PortalService {
 
     findAll(params?: ParamsModel) {
         return this.httpService.get(`api/abbott/findAll?server=${params.server}&folder_type=${params.folder_type}`
-            + `&folder_name=${params.folder_name}&page=${params.index}&size=${params.size}`);
+            + `&folder_name=${params.folder_name}&param=${params.param}&start=${params.start}` +
+            `&end=${params.end}&page=${params.index}&size=${params.size}`);
     }
 
     fetchReport() {
