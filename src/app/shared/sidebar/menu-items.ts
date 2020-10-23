@@ -12,8 +12,8 @@ export const ROUTES: RouteInfo[] = [
         submenu: []
     },
     {
-        path: '/portal1',
-        title: 'Portal1',
+        path: '/portal',
+        title: 'Portal',
         icon: 'mdi mdi-cube-outline',
         class: '',
         label: '',

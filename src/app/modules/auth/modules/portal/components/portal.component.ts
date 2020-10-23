@@ -3,21 +3,25 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
-import { PARAMS, PORTAL1_COLUMN } from '../../../../../shared/constant';
-import { PaginationService, ToastService } from '../../../../../core/services';
+import { FOLDER_NAME, FOLDER_TYPE, PARAMS, PORTAL_COLUMN } from '../../../../../shared/constant';
+import { PaginationService, PortalService, ToastService } from '../../../../../core/services';
 import { MatSort } from '@angular/material/sort';
 
 @Component({
-  selector: 'app-portal1',
-  templateUrl: './portal1.component.html',
-  styleUrls: ['./portal1.component.css']
+  selector: 'app-portal',
+  templateUrl: './portal.component.html',
+  styleUrls: ['./portal.component.css']
 })
 
-export class Portal1Component implements OnInit {
+export class PortalComponent implements OnInit {
+
+  params = PARAMS;
+  folderType = FOLDER_TYPE;
+  folderName = FOLDER_NAME;
 
   // tabuler var
   dataSource = new MatTableDataSource();
-  displayedColumns = PORTAL1_COLUMN;
+  displayedColumns = PORTAL_COLUMN;
   filterText: string;
 
   // pagination var
@@ -28,13 +32,12 @@ export class Portal1Component implements OnInit {
   totalDataLength: number;
   currentDataLength: number;
 
-  params = PARAMS;
-
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private matDialog: MatDialog,
+    private portalService: PortalService,
     private paginationService: PaginationService,
     private toastService: ToastService
   ) {
@@ -43,6 +46,10 @@ export class Portal1Component implements OnInit {
         this.paginationService.verifyIndexParams(params.index) : this.pageIndex;
       this.pageSize = this.params.size = params.size ?
         this.paginationService.verifySizeParams(params.size) : this.pageSize;
+      this.params.folder_name = params.folder_name ? params.folder_name : '';
+      this.params.folder_type = params.folder_type ? params.folder_type : '';
+      this.params.server = params.server ? params.server : '';
+      this.getData();
     });
   }
 
@@ -61,7 +68,7 @@ export class Portal1Component implements OnInit {
       this.totalDataLength,
       this.pageIndex,
       this.pageSize,
-      '/portal1'
+      '/portal'
     );
   }
 
@@ -70,7 +77,7 @@ export class Portal1Component implements OnInit {
       this.pageIndex,
       this.pageSize,
       this.possibleIndex,
-      '/portal1'
+      '/portal'
     );
   }
 
@@ -78,7 +85,7 @@ export class Portal1Component implements OnInit {
     this.currentDataLength = this.paginationService.loadPreviousPage(
       this.pageIndex,
       this.pageSize,
-      '/portal1'
+      '/portal'
     );
   }
 
@@ -87,6 +94,19 @@ export class Portal1Component implements OnInit {
       autoFocus: false,
       closeOnNavigation: true,
       disableClose: true
+    });
+  }
+
+  getData() {
+    this.portalService.findAll(this.params).subscribe((response: any) => {
+      this.totalDataLength = response.headers.get('X-Total-Count');
+      this.possibleIndex = this.paginationService.getPossibleIndexNumber(
+        this.totalDataLength, this.pageIndex, this.pageSize
+      );
+      this.currentDataLength = this.paginationService.returnCurrentDataLength();
+      this.dataSource.data = response.body.data;
+    }, error => {
+      this.toastService.showDanger(error.error.detail);
     });
   }
 

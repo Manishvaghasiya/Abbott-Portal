@@ -11,9 +11,7 @@
             </div>
             <div class="col-md-6">
                 <ul class="list-unstyled d-flex m-0 justify-content-end action-main-links">
-                    <li><a href="javascript:void(0);">
-                            <i class="fas fa-plus"></i> Create</a></li>
-                    <li><a href="javascript:void(0);"><i class="fas fa-sync-alt"></i> Refresh
+                    <li (click)="getData()"><a href="javascript:void(0);"><i class="fas fa-sync-alt"></i> Refresh
                         </a></li>
                 </ul>
             </div>
@@ -25,23 +23,58 @@
     <table class="table table-bordered table-striped" mat-table [dataSource]="dataSource" matSort>
 
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
             <td mat-cell *matCellDef="let element">{{element?.id}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
-            <td mat-cell *matCellDef="let element">{{element?.name}} </td>
+        <ng-container matColumnDef="created_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>created_at</th>
+            <td mat-cell *matCellDef="let element">{{element?.created_at | date : 'medium'}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="description">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Description</th>
-            <td mat-cell *matCellDef="let element">{{element?.description || 'N / A'}} </td>
+        <ng-container matColumnDef="file_accessed_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>file_accessed_at</th>
+            <td mat-cell *matCellDef="let element">{{element?.file_accessed_at | date : 'medium'}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="matchCount">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header>Match Count</th>
-            <td mat-cell *matCellDef="let element">{{element?.matchCount || 'N / A'}} </td>
+        <ng-container matColumnDef="file_created_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>file_created_at</th>
+            <td mat-cell *matCellDef="let element">{{element?.file_created_at | date : 'medium'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="file_modified_at">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>file_modified_at</th>
+            <td mat-cell *matCellDef="let element">{{element?.file_modified_at | date : 'medium'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="filename">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>filename</th>
+            <td mat-cell *matCellDef="let element">{{element?.filename}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="filesize">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>filesize</th>
+            <td mat-cell *matCellDef="let element">{{element?.filesize}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="folder_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>folder_name</th>
+            <td mat-cell *matCellDef="let element">{{element?.folder_name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="folder_type">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>folder_type</th>
+            <td mat-cell *matCellDef="let element">{{element?.folder_type}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="location">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>location</th>
+            <td mat-cell *matCellDef="let element">{{element?.location}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="server">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>server</th>
+            <td mat-cell *matCellDef="let element">{{element?.server}} </td>
         </ng-container>
 
         <ng-container matColumnDef="actions">

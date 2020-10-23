@@ -14,9 +14,14 @@ const routes: Routes = [{
       loadChildren: () => import(`./modules/dashboard/dashboard.module`).then(m => m.DashboardModule)
     },
     {
-      path: 'portal1',
+      path: 'portal',
       // canActivate: [AuthGuard],
-      loadChildren: () => import(`./modules/portal-1/portal1.module`).then(m => m.Portal1Module)
+      loadChildren: () => import(`./modules/portal/portal.module`).then(m => m.PortalModule)
+    },
+    {
+      path: 'report',
+      // canActivate: [AuthGuard],
+      loadChildren: () => import(`./modules/report/report.module`).then(m => m.ReportModule)
     }
   ]
 }];

@@ -4,3 +4,4 @@ export * from './pagination.service';
 export * from './toast.service';
 export * from './dashboard.service';
 export * from './data-modification.service';
+export * from './portal.service';
