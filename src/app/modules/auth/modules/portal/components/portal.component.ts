@@ -46,7 +46,6 @@ export class PortalComponent implements OnInit {
         this.paginationService.verifySizeParams(params.size) : this.pageSize;
       this.params.folder_name = params.folder_name ? params.folder_name : '';
       this.params.folder_type = params.folder_type ? params.folder_type : '';
-      this.params.server = params.server ? params.server : '';
       this.params.param = params.param ? params.param : '';
       this.params.start = params.start ? params.start : '';
       this.params.end = params.end ? params.end : '';

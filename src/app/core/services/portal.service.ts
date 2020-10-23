@@ -10,7 +10,7 @@ export class PortalService {
     constructor(private httpService: HttpClientService) { }
 
     findAll(params?: ParamsModel) {
-        return this.httpService.get(`api/abbott/findAll?server=${params.server}&folder_type=${params.folder_type}`
+        return this.httpService.get(`api/abbott/findAll?folder_type=${params.folder_type}`
             + `&folder_name=${params.folder_name}&param=${params.param}&start=${params.start}` +
             `&end=${params.end}&page=${params.index}&size=${params.size}`);
     }
