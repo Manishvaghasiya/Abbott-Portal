@@ -30,4 +30,8 @@ export class PortalService {
     filterByFilename(fileName: string) {
         return this.httpService.get(`api/abbott?filename=${fileName}`);
     }
+
+    checkProgress() {
+        return this.httpService.get(`api/abbott/check-progress`);
+    }
 }

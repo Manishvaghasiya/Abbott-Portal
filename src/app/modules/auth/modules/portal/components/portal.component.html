@@ -30,14 +30,50 @@
                             </option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label>Select Param</label>
-                        <select class="form-control" name="folderName" (click)="$event.stopPropagation(); false;"
-                            (ngModelChange)="filterByFolderType($event.target.value)">
-                            <option *ngFor="let item of filterParam" [value]="item">{{item}}
-                            </option>
-                        </select>
+                </form>
+            </mat-menu>
+
+            <button class="btn btn-primary filter-drop btn-sm" matTooltip="Date Filter"
+                [matMenuTriggerFor]="dateFilter">
+                <i class="fas fa-calendar-check"></i>
+            </button>
+            <mat-menu #dateFilter="matMenu" [overlapTrigger]="false">
+                <form [formGroup]="dateFilterForm" (keydown.tab)="$event.stopPropagation()" class="filter-form"
+                    novalidate>
+                    <div (click)="$event.stopPropagation(); false;">
+                        <div class="form-group">
+                            <label>Select Param</label>
+                            <div class="cal-input">
+                                <select class="form-control" formControlName="param">
+                                    <option *ngFor="let item of filterParam" [value]="item">{{item}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Start Date</label>
+                            <div class="cal-input">
+                                <input class="form-control form-control-sm" formControlName="start"
+                                    placeholder="Select Start Date" [owlDateTime]="dt1">
+                                <span class="cal-icon" [owlDateTimeTrigger]="dt1"><i
+                                        class="far fa-calendar-alt"></i></span>
+                                <owl-date-time #dt1></owl-date-time>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>End Date</label>
+                            <div class="cal-input">
+                                <input class="form-control form-control-sm" formControlName="end"
+                                    placeholder="Select End Date" [owlDateTime]="dt2">
+                                <span class="cal-icon" [owlDateTimeTrigger]="dt2"><i
+                                        class="far fa-calendar-alt"></i></span>
+                                <owl-date-time #dt2></owl-date-time>
+                            </div>
+                        </div>
                     </div>
+                    <button class="btn btn-primary btn-sm py-1" (click)="filterByDate()">
+                        Apply</button>
+                    <button class="btn btn-secondary btn-sm py-1" (click)="dateFilterForm.reset()">Reset</button>
                 </form>
             </mat-menu>
             <div class="col-md-6">

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FOLDER_NAME, FOLDER_TYPE, PARAMS, PORTAL_COLUMN, FILTER_PARAM } from '../../../../../shared/constant';
 import { PaginationService, PortalService, ToastService } from '../../../../../core/services';
 import { MatSort } from '@angular/material/sort';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-portal',
@@ -18,6 +19,8 @@ export class PortalComponent implements OnInit {
   folderType = FOLDER_TYPE;
   folderName = FOLDER_NAME;
   filterParam = FILTER_PARAM;
+  date = new Date();
+  dateFilterForm: FormGroup;
 
   // tabuler var
   dataSource = new MatTableDataSource();
@@ -35,6 +38,7 @@ export class PortalComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private matDialog: MatDialog,
+    private formBuilder: FormBuilder,
     private portalService: PortalService,
     private paginationService: PaginationService,
     private toastService: ToastService
@@ -56,6 +60,11 @@ export class PortalComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   ngOnInit(): void {
+    this.dateFilterForm = this.formBuilder.group({
+      param: new FormControl('All', [Validators.required]),
+      start: new FormControl('', [Validators.required]),
+      end: new FormControl('', [Validators.required])
+    });
     this.dataSource.sort = this.sort;
   }
 
@@ -105,16 +114,17 @@ export class PortalComponent implements OnInit {
     console.log('[folderType]', folderType);
   }
 
-  filterByParam(param: string) {
-    console.log('[param]', param);
-  }
+  filterByDate() {
+    if (this.dateFilterForm.invalid) {
+      this.dateFilterForm.markAllAsTouched();
+      return;
+    }
 
-  filterByStartDate(start: Date) {
-    console.log('[start]', start);
-  }
+    this.params.param = this.dateFilterForm.value.param;
+    this.params.start = this.dateFilterForm.value.start;
+    this.params.end = this.dateFilterForm.value.end;
 
-  filterByEndDate(end: Date) {
-    console.log('[end]', end);
+    this.getData();
   }
 
   getData() {
