@@ -827,3 +827,23 @@ color: #fff;
 .cdk-overlay-pane {
     max-width: inherit !important;
 }
+.dropdown.dropdown-custom .dropdown-menu-md{
+    min-width: 230px;
+    padding: 15px;
+}
+.dropdown.dropdown-custom .dropdown-menu-lg{
+    min-width: 300px;
+    padding: 15px;
+}
+.dropdown.dropdown-custom .btn:after{
+    display: none;
+}
+.btn.btn-md {
+    padding: 6px 14px 5px 14px !important;
+    height: 38px;
+}
+.cal-input .cal-icon {
+    position: absolute;
+    right: 12px;
+    cursor: pointer;
+}
