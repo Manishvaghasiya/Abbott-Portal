@@ -8,7 +8,6 @@ import { MatSort } from '@angular/material/sort';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { ParamsModel } from '../../../../../models';
-import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-portal',
@@ -157,7 +156,6 @@ export class PortalComponent implements OnInit {
   getPortalDataCheck() {
     this.portalService.checkProgress().subscribe((response: any) => {
       if (response.body.data) {
-        this.portalService.delay(5000);
         this.getPortalDataCheck();
       } else {
         this.getData();

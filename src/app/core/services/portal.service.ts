@@ -34,8 +34,4 @@ export class PortalService {
     checkProgress() {
         return this.httpService.get(`api/abbott/check-progress`);
     }
-
-    delay(ms: number) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
 }
