@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FOLDER_NAME, FOLDER_TYPE, PARAMS, PORTAL_COLUMN, FILTER_PARAM } from '../../../../../shared/constant';
 import { PaginationService, PortalService, ToastService } from '../../../../../core/services';
 import { MatSort } from '@angular/material/sort';
@@ -21,6 +21,8 @@ export class PortalComponent implements OnInit {
   filterParam = FILTER_PARAM;
   date = new Date();
   dateFilterForm: FormGroup;
+  filterFolderName = 'All';
+  filterFolderType = 'All';
 
   // tabuler var
   dataSource = new MatTableDataSource();
@@ -38,6 +40,7 @@ export class PortalComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private matDialog: MatDialog,
+    private router: Router,
     private formBuilder: FormBuilder,
     private portalService: PortalService,
     private paginationService: PaginationService,
@@ -48,12 +51,12 @@ export class PortalComponent implements OnInit {
         this.paginationService.verifyIndexParams(params.index) : this.pageIndex;
       this.pageSize = this.params.size = params.size ?
         this.paginationService.verifySizeParams(params.size) : this.pageSize;
-      this.params.folder_name = params.folder_name ? params.folder_name : '';
-      this.params.folder_type = params.folder_type ? params.folder_type : '';
+      this.filterFolderName = this.params.folder_name = (params.folder_name ? params.folder_name : 'All');
+      this.filterFolderType = this.params.folder_type = (params.folder_type ? params.folder_type : 'All');
       this.params.param = params.param ? params.param : '';
       this.params.start = params.start ? params.start : '';
       this.params.end = params.end ? params.end : '';
-      this.getData();
+      this.getPortalDataCheck();
     });
   }
 
@@ -106,12 +109,12 @@ export class PortalComponent implements OnInit {
     });
   }
 
-  filterByFolderName(folderName: string) {
-    console.log('[folderName]', folderName);
+  filterByFolderName() {
+    this.router.navigate(['/portal'], { queryParams: { folder_name: this.filterFolderName }, queryParamsHandling: 'merge' });
   }
 
-  filterByFolderType(folderType: string) {
-    console.log('[folderType]', folderType);
+  filterByFolderType() {
+    this.router.navigate(['/portal'], { queryParams: { folder_type: this.filterFolderType }, queryParamsHandling: 'merge' });
   }
 
   filterByDate() {
@@ -124,7 +127,7 @@ export class PortalComponent implements OnInit {
     this.params.start = this.dateFilterForm.value.start;
     this.params.end = this.dateFilterForm.value.end;
 
-    this.getData();
+    this.getPortalDataCheck();
   }
 
   getData() {
@@ -135,6 +138,18 @@ export class PortalComponent implements OnInit {
       );
       this.currentDataLength = this.paginationService.returnCurrentDataLength();
       this.dataSource.data = response.body.data;
+    }, error => {
+      this.toastService.showDanger(error.error.detail);
+    });
+  }
+
+  getPortalDataCheck() {
+    this.portalService.checkProgress().subscribe((response: any) => {
+      if (response.body.data) {
+        this.getPortalDataCheck();
+      } else {
+        this.getData();
+      }
     }, error => {
       this.toastService.showDanger(error.error.detail);
     });

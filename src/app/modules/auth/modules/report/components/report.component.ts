@@ -18,12 +18,24 @@ export class ReportComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getReport();
+    this.getPortalDataCheck();
   }
 
   getReport() {
     this.portalService.fetchReport().subscribe((response: any) => {
       this.reportData = response.body;
+    }, error => {
+      this.toastService.showDanger(error.error.detail);
+    });
+  }
+
+  getPortalDataCheck() {
+    this.portalService.checkProgress().subscribe((response: any) => {
+      if (response.body.data) {
+        this.getPortalDataCheck();
+      } else {
+        this.getReport();
+      }
     }, error => {
       this.toastService.showDanger(error.error.detail);
     });

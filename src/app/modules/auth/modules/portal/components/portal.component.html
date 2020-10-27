@@ -9,30 +9,32 @@
                     </div>
                 </div>
                 <div class="dropdown dropdown-custom">
-                    <button class="btn btn-primary btn-md dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-primary btn-md dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-filter"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-md" aria-labelledby="dropdownMenuButton">
                         <form (keydown.tab)="$event.stopPropagation()" class="filter-form">
                             <div class="form-group">
                                 <label>Select Folder Name</label>
-                                <select class="form-control" name="folderName" (click)="$event.stopPropagation(); false;"
-                                    (ngModelChange)="filterByFolderName($event.target.value)">
+                                <select class="form-control" name="filterFilderName"
+                                    (click)="$event.stopPropagation(); false;" [(ngModel)]="filterFolderName"
+                                    (ngModelChange)="filterByFolderName()">
                                     <option *ngFor="let item of folderName" [value]="item">{{item}}
                                     </option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Select Folder Type</label>
-                                <select class="form-control" name="folderName" (click)="$event.stopPropagation(); false;"
-                                    (ngModelChange)="filterByFolderType($event.target.value)">
+                                <select class="form-control" name="filterFolderType" [(ngModel)]="filterFolderType"
+                                    (click)="$event.stopPropagation(); false;" (ngModelChange)="filterByFolderType()">
                                     <option *ngFor="let item of folderType" [value]="item">{{item}}
                                     </option>
                                 </select>
                             </div>
                         </form>
                     </div>
-                  </div>
+                </div>
             </div>
             <div class="col-md-5 col-lg-7 d-flex align-items-center justify-content-end">
 
@@ -41,55 +43,54 @@
                         </a></li>
                 </ul>
 
-                  <div class="dropdown dropdown-custom">
-                    <button class="btn btn-primary btn-md ml-3 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown dropdown-custom">
+                    <button class="btn btn-primary btn-md ml-3 dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-calendar-check"></i>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-md" aria-labelledby="dropdownMenuButton">
-                        <form [formGroup]="dateFilterForm" (keydown.tab)="$event.stopPropagation()"
-                        novalidate>
-                        <div (click)="$event.stopPropagation(); false;">
-                            <div class="form-group">
-                                <label>Select Param</label>
-                                <div class="cal-input">
-                                    <select class="form-control" formControlName="param">
-                                        <option *ngFor="let item of filterParam" [value]="item">{{item}}
-                                        </option>
-                                    </select>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-md"
+                        aria-labelledby="dropdownMenuButton">
+                        <form [formGroup]="dateFilterForm" (keydown.tab)="$event.stopPropagation()" novalidate>
+                            <div (click)="$event.stopPropagation(); false;">
+                                <div class="form-group">
+                                    <label>Select Param</label>
+                                    <div class="cal-input">
+                                        <select class="form-control" formControlName="param">
+                                            <option *ngFor="let item of filterParam" [value]="item">{{item}}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Start Date</label>
+                                    <div class="cal-input d-flex align-items-center">
+                                        <input class="form-control" formControlName="start"
+                                            placeholder="Select Start Date" [owlDateTime]="dt1">
+                                        <span class="cal-icon" [owlDateTimeTrigger]="dt1"><i
+                                                class="far fa-calendar-alt"></i></span>
+                                        <owl-date-time #dt1></owl-date-time>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label>End Date</label>
+                                    <div class="cal-input d-flex align-items-center">
+                                        <input class="form-control" formControlName="end" placeholder="Select End Date"
+                                            [owlDateTime]="dt2">
+                                        <span class="cal-icon" [owlDateTimeTrigger]="dt2"><i
+                                                class="far fa-calendar-alt"></i></span>
+                                        <owl-date-time #dt2></owl-date-time>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label>Start Date</label>
-                                <div class="cal-input d-flex align-items-center">
-                                    <input class="form-control" formControlName="start"
-                                        placeholder="Select Start Date" [owlDateTime]="dt1">
-                                    <span class="cal-icon" [owlDateTimeTrigger]="dt1"><i
-                                            class="far fa-calendar-alt"></i></span>
-                                    <owl-date-time #dt1></owl-date-time>
-                                </div>
+                            <div class="text-right">
+                                <button class="btn btn-primary btn-sm py-1 mr-3" (click)="filterByDate()">
+                                    Apply</button>
+                                <button class="btn btn-secondary btn-sm py-1"
+                                    (click)="dateFilterForm.reset()">Reset</button>
                             </div>
-                            <div class="form-group">
-                                <label>End Date</label>
-                                <div class="cal-input d-flex align-items-center">
-                                    <input class="form-control" formControlName="end"
-                                        placeholder="Select End Date" [owlDateTime]="dt2">
-                                    <span class="cal-icon" [owlDateTimeTrigger]="dt2"><i
-                                            class="far fa-calendar-alt"></i></span>
-                                    <owl-date-time #dt2></owl-date-time>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <button class="btn btn-primary btn-sm py-1 mr-3" (click)="filterByDate()">
-                                Apply</button>
-                            <button class="btn btn-secondary btn-sm py-1" (click)="dateFilterForm.reset()">Reset</button>
-                        </div>
-                        
-                    </form>
+                        </form>
                     </div>
-                  </div>
-
-                
+                </div>
             </div>
         </div>
     </div>
