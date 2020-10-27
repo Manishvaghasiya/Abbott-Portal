@@ -828,7 +828,7 @@ color: #fff;
     max-width: inherit !important;
 }
 .dropdown.dropdown-custom .dropdown-menu-md{
-    min-width: 230px;
+    min-width: 250px;
     padding: 15px;
 }
 .dropdown.dropdown-custom .dropdown-menu-lg{
