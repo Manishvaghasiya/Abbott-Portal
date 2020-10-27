@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportData } from '../../../../../models/portal';
 import { PortalService, ToastService } from '../../../../../core/services';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-report',
@@ -32,6 +33,7 @@ export class ReportComponent implements OnInit {
   getPortalDataCheck() {
     this.portalService.checkProgress().subscribe((response: any) => {
       if (response.body.data) {
+        this.portalService.delay(5000);
         this.getPortalDataCheck();
       } else {
         this.getReport();
