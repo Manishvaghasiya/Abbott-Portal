@@ -6,6 +6,8 @@ import { FOLDER_NAME, FOLDER_TYPE, PARAMS, PORTAL_COLUMN, FILTER_PARAM } from '.
 import { PaginationService, PortalService, ToastService } from '../../../../../core/services';
 import { MatSort } from '@angular/material/sort';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
+import { ParamsModel } from 'src/app/models';
 
 @Component({
   selector: 'app-portal',
@@ -23,6 +25,7 @@ export class PortalComponent implements OnInit {
   dateFilterForm: FormGroup;
   filterFolderName = 'All';
   filterFolderType = 'All';
+  filterFileName = 'All';
 
   // tabuler var
   dataSource = new MatTableDataSource();
@@ -44,7 +47,8 @@ export class PortalComponent implements OnInit {
     private formBuilder: FormBuilder,
     private portalService: PortalService,
     private paginationService: PaginationService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private datepipe: DatePipe
   ) {
     this.route.queryParams.subscribe(params => {
       this.pageIndex = this.params.index = params.index ?
@@ -124,10 +128,16 @@ export class PortalComponent implements OnInit {
     }
 
     this.params.param = this.dateFilterForm.value.param;
-    this.params.start = this.dateFilterForm.value.start;
-    this.params.end = this.dateFilterForm.value.end;
+    this.params.start = this.datepipe.transform(this.dateFilterForm.value.start, 'yyyy-MM-dd HH:mm:ss') + '';
+    this.params.end = this.datepipe.transform(this.dateFilterForm.value.end, 'yyyy-MM-dd HH:mm:ss') + '';
 
     this.getPortalDataCheck();
+  }
+
+  setDateFilterData(data: ParamsModel) {
+    this.dateFilterForm.controls.param.setValue(data.param);
+    this.dateFilterForm.controls.start.setValue(data.start);
+    this.dateFilterForm.controls.end.setValue(data.end);
   }
 
   getData() {

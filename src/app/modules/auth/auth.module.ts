@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 // this includes the core NgIdleModule but includes keepalive providers for easy wireup
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthLayoutComponent } from './auth-layout.component';
@@ -38,7 +38,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
+    },
+    DatePipe
   ],
 })
 export class AuthModule { }
