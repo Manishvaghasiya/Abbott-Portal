@@ -15,6 +15,7 @@ export class AuthService {
   authUserInfo = 'user-data';
   userInfo = 'user-data-auth';
   rememberUser = 'remember-user';
+  time = 'starttime';
 
   constructor(
     private httpService: HttpClientService,
@@ -31,6 +32,14 @@ export class AuthService {
 
   setAuthToken(token: string) {
     sessionStorage.setItem(this.jwtToken, token);
+  }
+
+  setTime(time: string) {
+    sessionStorage.setItem(this.time, time);
+  }
+
+  getTime() {
+    return sessionStorage.getItem(this.time) || null;
   }
 
   setRefreshToken(refreshToken: string) {

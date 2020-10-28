@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportData } from '../../../../../models/portal';
-import { PortalService, ToastService } from '../../../../../core/services';
+import { AuthService, PortalService, ToastService } from '../../../../../core/services';
 
 @Component({
   selector: 'app-report',
@@ -15,6 +15,7 @@ export class ReportComponent implements OnInit {
 
   constructor(
     private portalService: PortalService,
+    private authService: AuthService,
     private toastService: ToastService
   ) { }
 
@@ -26,14 +27,27 @@ export class ReportComponent implements OnInit {
     this.disableFlag = false;
     this.portalService.fetchReport(flag).subscribe(async (response: any) => {
       this.reportData = response.body;
-      if (flag) {
-        this.disableFlag = true;
-        await this.portalService.delay(30000);
+      if (this.authService.getTime()) {
+        if (this.checkTimeDiff(new Date()) > 300) {
+          this.disableFlag = false;
+          this.authService.setTime(new Date() + '');
+        } else {
+          this.disableFlag = true;
+        }
+      } else {
+        if (flag) {
+          this.authService.setTime(new Date() + '');
+          this.disableFlag = true;
+        }
       }
-      this.disableFlag = false;
     }, error => {
       this.toastService.showDanger(error.error.detail);
     });
+  }
+
+  checkTimeDiff(date: Date): number {
+    const time = (date.getTime() - new Date(this.authService.getTime()).getTime()) / 1000;
+    return time;
   }
 
   downloadReport() {
