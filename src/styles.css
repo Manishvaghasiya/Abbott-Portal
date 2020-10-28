@@ -847,3 +847,11 @@ color: #fff;
     right: 12px;
     cursor: pointer;
 }
+.form-bg-style{
+    padding: 15px;
+    background-color: #fff;
+    margin-top: -8px;
+    border-radius: 8px;
+    box-shadow: 0 1px 15px 1px rgba(62,57,107,.07);
+    border: solid 1px #eee;
+}

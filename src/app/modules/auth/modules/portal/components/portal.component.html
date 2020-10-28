@@ -1,21 +1,21 @@
 <div class="card mb-3 top-less">
     <div class="card-body">
         <div class="row align-items-center">
-            <div class="col-md-7 col-lg-5 mb-3 mb-md-0 d-flex">
-                <div class="w-100 mr-3">
+            <div class="col-md-7 col-lg-5 mb-3 mb-md-0 d-flex pr-md-1">
+                <div class="w-100">
                     <div class="input-group input-group-sm">
                         <input type="text" class="form-control" [(ngModel)]="filterText" #ctrl="ngModel"
                             (keyup)="applyFilter($event.target.value)" placeholder="Search" autocomplete="off">
                     </div>
                 </div>
-                <div class="dropdown dropdown-custom">
-                    <button class="btn btn-primary btn-md dropdown-toggle" type="button" id="dropdownMenuButton"
-                        title="folder name/type filter" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">
+            </div>
+            <div class="col-md-5 col-lg-7 d-flex align-items-center justify-content-end">
+                <div class="mr-auto">
+                    <button [matMenuTriggerFor]="filter" class="btn btn-primary btn-md" aria-label="Example icon-button with a menu">
                         <i class="fas fa-filter"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-md" aria-labelledby="dropdownMenuButton">
-                        <form (keydown.tab)="$event.stopPropagation()" class="filter-form">
+                      </button>
+                      <mat-menu #filter="matMenu" class="dropdown-menu-md">
+                        <form (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" class="form-bg-style">
                             <div class="form-group">
                                 <label>Select Folder Name</label>
                                 <select class="form-control" name="filterFilderName"
@@ -34,15 +34,14 @@
                                 </select>
                             </div>
                         </form>
-                    </div>
-                </div>
-                <div class="dropdown dropdown-custom">
-                    <button class="btn btn-primary btn-md ml-3 dropdown-toggle" type="button" id="dropdownMenuButton"
-                        title="filename filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      </mat-menu>
+    
+    
+                     <button [matMenuTriggerFor]="file" class="btn btn-primary btn-md ml-3" aria-label="Example icon-button with a menu">
                         <i class="fas fa-file-alt"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-md" aria-labelledby="dropdownMenuButton">
-                        <form (keydown.tab)="$event.stopPropagation()" class="filter-form">
+                      </button>
+                      <mat-menu #file="matMenu" class="dropdown-menu-md">
+                        <form (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" class="form-bg-style">
                             <div class="form-group">
                                 <label>Search File</label>
                                 <form [formGroup]="filterByFileNameForm" novalidate>
@@ -59,15 +58,14 @@
                                 </form>
                             </div>
                         </form>
-                    </div>
-                </div>
-                <div class="dropdown dropdown-custom">
-                    <button class="btn btn-primary btn-md ml-3 dropdown-toggle" type="button" id="dropdownMenuButton"
-                        title="date filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      </mat-menu>
+    
+    
+                      <button [matMenuTriggerFor]="calendar" class="btn btn-primary btn-md ml-3" aria-label="Example icon-button with a menu">
                         <i class="fas fa-calendar-check"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-md" aria-labelledby="dropdownMenuButton">
-                        <form (keydown.tab)="$event.stopPropagation()" [formGroup]="dateFilterForm" novalidate>
+                      </button>
+                      <mat-menu #calendar="matMenu" class="dropdown-menu-md">
+                        <form (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" class="form-bg-style" [formGroup]="dateFilterForm" novalidate>
                             <div class="form-group">
                                 <label>Select Param</label>
                                 <div class="cal-input">
@@ -107,10 +105,8 @@
                                     (click)="resetDateFilter();">Reset</button>
                             </div>
                         </form>
-                    </div>
+                      </mat-menu>
                 </div>
-            </div>
-            <div class="col-md-5 col-lg-7 d-flex align-items-center justify-content-end">
                 <ul class="list-unstyled d-flex m-0 justify-content-end action-main-links">
                     <li (click)="getData()"><a href="javascript:void(0);"><i class="fas fa-sync-alt"></i> Refresh
                         </a></li>
