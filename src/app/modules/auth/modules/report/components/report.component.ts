@@ -29,6 +29,18 @@ export class ReportComponent implements OnInit {
     });
   }
 
+  downloadReport() {
+    this.portalService.checkProgress().subscribe((response: any) => {
+      if (response.body.data) {
+        this.getPortalDataCheck();
+      } else {
+        this.portalService.downloadReport();
+      }
+    }, error => {
+      this.toastService.showDanger(error.error.detail);
+    });
+  }
+
   getPortalDataCheck() {
     this.portalService.checkProgress().subscribe((response: any) => {
       if (response.body.data) {

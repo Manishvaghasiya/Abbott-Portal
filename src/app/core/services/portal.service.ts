@@ -20,7 +20,7 @@ export class PortalService {
     }
 
     downloadReport() {
-        return this.httpService.get(`api/abbott/report/download`);
+        return this.httpService.getFile(`api/abbott/report/download`);
     }
 
     getById(id: number) {
