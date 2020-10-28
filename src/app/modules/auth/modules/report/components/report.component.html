@@ -1,10 +1,10 @@
 <div class="card mb-3 top-less">
   <div class="card-body">
-    <h4 class="card-title"><span class="lstick"></span>Distance Calculator</h4>
 
-<div class="p-3 mb-4 light-bg">
+    <h4 class="card-title"><span class="lstick"></span>Distance Calculator</h4>
+    <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
-       <table class="table table-bordered">
+        <table class="table table-bordered">
           <thead>
             <tr>
               <th>Processed Till Now</th>
@@ -13,137 +13,129 @@
           </thead>
           <tbody>
             <tr>
-              <td>Data</td>
-              <td>Data</td>
-            </tr>
-            <tr>
-              <td>Data</td>
-              <td>Data</td>
+              <td>{{reportData?.DISTANCE_ARCHIVE}}</td>
+              <td>{{reportData?.DISTANCE_UNPROCESSED}}</td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>    
-    
-    <h4 class="card-title"><span class="lstick"></span>Reverse Integration Einvoice</h4>
+    </div>
 
+    <h4 class="card-title"><span class="lstick"></span>Reverse Integration Einvoice</h4>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
-           <thead>
-             <tr>
+          <thead>
+            <tr>
               <th>Processed Till Now</th>
               <th>avsap</th>
               <th>mdsap</th>
               <th>ienable</th>
               <th>missing</th>
-             </tr>
-           </thead>
-           <tbody>
-             <tr>
-               <td>Data</td>
-               <td>Data</td>
-               <td>Data</td>
-               <td>Data</td>
-               <td>Data</td>
-             </tr>
-           </tbody>
-         </table>
-       </div>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{reportData?.EINOVOICE_ARCHIVE}}</td>
+              <td>{{reportData?.EINOVOICE_AVSAP}}</td>
+              <td>{{reportData?.EINOVOICE_MDSAP}}</td>
+              <td>{{reportData?.EINOVOICE_IENABLE}}</td>
+              <td>{{reportData?.EINOVOICE_MISSING}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+    </div>
 
-      <h4 class="card-title"><span class="lstick"></span>Reverse Integration EWayBill</h4>
+    <h4 class="card-title"><span class="lstick"></span>Reverse Integration EWayBill</h4>
+    <div class="p-3 mb-4 light-bg">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Processed Till Now</th>
+              <th>avsap</th>
+              <th>mdsap</th>
+              <th>ienable</th>
+              <th>missing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{reportData?.EWAYBILL_ARCHIVE}}</td>
+              <td>{{reportData?.EWAYBILL_AVSAP}}</td>
+              <td>{{reportData?.EWAYBILL_MDSAP}}</td>
+              <td>{{reportData?.EWAYBILL_IENABLE}}</td>
+              <td>{{reportData?.EWAYBILL_MISSING}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-      <div class="p-3 mb-4 light-bg">
-        <div class="table-responsive">
-          <table class="table table-bordered">
-             <thead>
-               <tr>
-                <th>Processed Till Now</th>
-                <th>avsap</th>
-                <th>mdsap</th>
-                <th>ienable</th>
-                <th>missing</th>
-               </tr>
-             </thead>
-             <tbody>
-               <tr>
-                 <td>Data</td>
-                 <td>Data</td>
-                 <td>Data</td>
-                 <td>Data</td>
-                 <td>Data</td>
-               </tr>
-             </tbody>
-           </table>
-         </div>
-        </div>
+    <h4 class="card-title"><span class="lstick"></span>Reverse Integration Out</h4>
+    <div class="p-3 mb-4 light-bg">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Processed Till Now</th>
+              <th>avsap</th>
+              <th>mdsap</th>
+              <th>ienable</th>
+              <th>missing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{reportData?.OUT_ARCHIVE}}</td>
+              <td>{{reportData?.OUT_AVSAP}}</td>
+              <td>{{reportData?.OUT_MDSAP}}</td>
+              <td>{{reportData?.OUT_IENABLE}}</td>
+              <td>{{reportData?.OUT_MISSING}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
 
-        <h4 class="card-title"><span class="lstick"></span>Reverse Integration Out</h4>
+    <h4 class="card-title"><span class="lstick"></span>Files Pending In SFTP</h4>
+    <div class="p-3 mb-4 light-bg">
+      <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>ARCHIVE/BOT</th>
+              <th>IN/Bot</th>
+              <th>OUT / EInvoice Details</th>
+              <th>OUT / EWayBill Details</th>
+              <th>avsap</th>
+              <th>mdsap</th>
+              <th>ienable</th>
+              <th>missing</th>
+              <th>distance file size missing</th>
+              <th>einvoice file size missing</th>
+              <th>ewaybill file size missing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{reportData?.SFTP_ARCHIVE}}</td>
+              <td>{{reportData?.SFTP_INBOT}}</td>
+              <td>{{reportData?.SFTP_OUT_EINVOICE}}</td>
+              <td>{{reportData?.SFTP_OUT_EWAYBILL}}</td>
+              <td>{{reportData?.SFTP_AVSAP}}</td>
+              <td>{{reportData?.SFTP_MDSAP}}</td>
+              <td>{{reportData?.SFTP_IENABLE}}</td>
+              <td>{{reportData?.SFTP_MISSING}}</td>
+              <td>{{reportData?.SFTP_MISSING_DISTANCE_SIZE}}</td>
+              <td>{{reportData?.SFTP_MISSING_EINVOICE_SIZE}}</td>
+              <td>{{reportData?.SFTP_MISSING_EWAYBILL_SIZE}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 
-        <div class="p-3 mb-4 light-bg">
-          <div class="table-responsive">
-            <table class="table table-bordered">
-               <thead>
-                 <tr>
-                  <th>Processed Till Now</th>
-                  <th>avsap</th>
-                  <th>mdsap</th>
-                  <th>ienable</th>
-                  <th>missing</th>
-                 </tr>
-               </thead>
-               <tbody>
-                 <tr>
-                   <td>Data</td>
-                   <td>Data</td>
-                   <td>Data</td>
-                   <td>Data</td>
-                   <td>Data</td>
-                 </tr>
-               </tbody>
-             </table>
-           </div>
-          </div>
-
-          <h4 class="card-title"><span class="lstick"></span>Files Pending In SFTP</h4>
-
-          <div class="p-3 mb-4 light-bg">
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                 <thead>
-                   <tr>
-                    <th>ARCHIVE/BOT</th>
-                    <th>IN/Bot</th>
-                    <th>OUT / EInvoice Details</th>
-                    <th>OUT / EWayBill Details</th>
-                    <th>avsap</th>
-                    <th>mdsap</th>
-                    <th>ienable</th>
-                    <th>missing</th>
-                    <th>distance file size missing</th>
-                    <th>einvoice file size missing</th>
-                    <th>ewaybill file size missing</th>
-                   </tr>
-                 </thead>
-                 <tbody>
-                   <tr>
-                     <td>Data</td>
-                     <td>Data</td>
-                     <td>Data</td>
-                     <td>Data</td>
-                     <td>Data</td>
-                     <td>Data</td>
-                     <td>Data</td>
-                     <td>Data</td>
-                     <td>Data</td>
-                     <td>Data</td>
-                     <td>Data</td>
-                   </tr>
-                 </tbody>
-               </table>
-             </div>
-            </div>
-
-            </div>
-            </div>
+</div>

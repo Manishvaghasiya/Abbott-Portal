@@ -21,7 +21,7 @@ export class InternalServerErrorComponent implements OnDestroy, OnInit {
   }
 
   backToHome() {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/portal']);
   }
 
   ngOnDestroy() {

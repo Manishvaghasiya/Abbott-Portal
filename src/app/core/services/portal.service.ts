@@ -28,7 +28,7 @@ export class PortalService {
     }
 
     filterByFilename(fileName: string) {
-        return this.httpService.get(`api/abbott?filename=${fileName}`);
+        return this.httpService.get(`api/abbott/filename?filename=${fileName}`);
     }
 
     checkProgress() {

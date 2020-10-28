@@ -23,6 +23,7 @@ export class PortalComponent implements OnInit {
   filterParam = FILTER_PARAM;
   date = new Date();
   dateFilterForm: FormGroup;
+  filterByFileNameForm: FormGroup;
   filterFolderName = 'All';
   filterFolderType = 'All';
   filterFileName = 'All';
@@ -71,6 +72,9 @@ export class PortalComponent implements OnInit {
       param: new FormControl('All', [Validators.required]),
       start: new FormControl('', [Validators.required]),
       end: new FormControl('', [Validators.required])
+    });
+    this.filterByFileNameForm = this.formBuilder.group({
+      filename: new FormControl('', [Validators.required])
     });
     this.dataSource.sort = this.sort;
   }
@@ -121,16 +125,38 @@ export class PortalComponent implements OnInit {
     this.router.navigate(['/portal'], { queryParams: { folder_type: this.filterFolderType }, queryParamsHandling: 'merge' });
   }
 
+  filterByFileName(filename: string) {
+    this.portalService.filterByFilename(filename).subscribe((response: any) => {
+      this.totalDataLength = response.body.TotalCount;
+      this.possibleIndex = this.paginationService.getPossibleIndexNumber(
+        this.totalDataLength, this.pageIndex, this.pageSize
+      );
+      this.currentDataLength = this.paginationService.returnCurrentDataLength();
+      this.dataSource.data = response.body.data;
+    }, error => {
+      this.toastService.showDanger(error.error.detail);
+    });
+  }
+
   filterByDate() {
     if (this.dateFilterForm.invalid) {
       this.dateFilterForm.markAllAsTouched();
       return;
     }
 
-    this.params.param = this.dateFilterForm.value.param;
+    this.params.param = this.dateFilterForm.value.param === 'All' ? '' : this.dateFilterForm.value.param;
     this.params.start = this.datepipe.transform(this.dateFilterForm.value.start, 'yyyy-MM-dd HH:mm:ss') + '';
     this.params.end = this.datepipe.transform(this.dateFilterForm.value.end, 'yyyy-MM-dd HH:mm:ss') + '';
 
+    this.getPortalDataCheck();
+  }
+
+  resetDateFilter() {
+    this.dateFilterForm.reset();
+    this.dateFilterForm.controls.param.setValue('All');
+    this.params.param = '';
+    this.params.start = '';
+    this.params.end = '';
     this.getPortalDataCheck();
   }
 
