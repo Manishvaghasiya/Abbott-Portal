@@ -10,7 +10,8 @@
                 </div>
                 <div class="dropdown dropdown-custom">
                     <button class="btn btn-primary btn-md dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        title="folder name/type filter" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
                         <i class="fas fa-filter"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-md" aria-labelledby="dropdownMenuButton">
@@ -32,6 +33,16 @@
                                     </option>
                                 </select>
                             </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="dropdown dropdown-custom">
+                    <button class="btn btn-primary btn-md ml-3 dropdown-toggle" type="button" id="dropdownMenuButton"
+                        title="filename filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="far fa-file-alt"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-md" aria-labelledby="dropdownMenuButton">
+                        <form (keydown.tab)="$event.stopPropagation()" class="filter-form">
                             <div class="form-group">
                                 <label>Search File</label>
                                 <form [formGroup]="filterByFileNameForm" novalidate>
@@ -52,7 +63,7 @@
                 </div>
                 <div class="dropdown dropdown-custom">
                     <button class="btn btn-primary btn-md ml-3 dropdown-toggle" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        title="date filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-calendar-check"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-md" aria-labelledby="dropdownMenuButton">
