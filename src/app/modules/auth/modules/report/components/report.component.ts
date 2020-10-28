@@ -11,6 +11,7 @@ import { PortalService, ToastService } from '../../../../../core/services';
 export class ReportComponent implements OnInit {
 
   reportData: ReportData;
+  disableFlag = false;
 
   constructor(
     private portalService: PortalService,
@@ -18,21 +19,28 @@ export class ReportComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getPortalDataCheck();
+    this.getPortalDataCheck(false);
   }
 
-  getReport() {
-    this.portalService.fetchReport().subscribe((response: any) => {
+  getReport(flag?: boolean) {
+    this.disableFlag = false;
+    this.portalService.fetchReport(flag).subscribe(async (response: any) => {
       this.reportData = response.body;
+      if (flag) {
+        this.disableFlag = true;
+        await this.portalService.delay(30000);
+      }
+      this.disableFlag = false;
     }, error => {
       this.toastService.showDanger(error.error.detail);
     });
   }
 
   downloadReport() {
-    this.portalService.checkProgress().subscribe((response: any) => {
+    this.portalService.checkProgress().subscribe(async (response: any) => {
       if (response.body.data) {
         this.getPortalDataCheck();
+        await this.portalService.delay(5000);
       } else {
         this.portalService.downloadReport();
       }
@@ -41,12 +49,13 @@ export class ReportComponent implements OnInit {
     });
   }
 
-  getPortalDataCheck() {
-    this.portalService.checkProgress().subscribe((response: any) => {
+  getPortalDataCheck(flag?: boolean) {
+    this.portalService.checkProgress().subscribe(async (response: any) => {
       if (response.body.data) {
-        this.getPortalDataCheck();
+        this.getPortalDataCheck(flag);
+        await this.portalService.delay(5000);
       } else {
-        this.getReport();
+        this.getReport(flag);
       }
     }, error => {
       this.toastService.showDanger(error.error.detail);

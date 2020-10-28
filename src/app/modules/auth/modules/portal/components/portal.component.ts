@@ -180,9 +180,10 @@ export class PortalComponent implements OnInit {
   }
 
   getPortalDataCheck() {
-    this.portalService.checkProgress().subscribe((response: any) => {
+    this.portalService.checkProgress().subscribe(async (response: any) => {
       if (response.body.data) {
         this.getPortalDataCheck();
+        await this.portalService.delay(5000);
       } else {
         this.getData();
       }

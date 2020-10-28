@@ -7,6 +7,9 @@
             <li (click)="downloadReport();"><a href="javascript:void(0);"><i class="fas fa-download"></i> Download
                 Report
               </a></li>
+            <li (click)="getPortalDataCheck(true);" [ngClass]="{disabled: disableFlag}"><a href="javascript:void(0);"><i
+                  class="fas fa-sync-alt"></i>
+                Refresh</a></li>
           </ul>
         </div>
       </div>
@@ -23,8 +26,8 @@
           </thead>
           <tbody>
             <tr>
-              <td>{{reportData?.DISTANCE_ARCHIVE}}</td>
-              <td>{{reportData?.DISTANCE_UNPROCESSED}}</td>
+              <td>{{reportData?.DISTANCE_ARCHIVE || 'N / A'}}</td>
+              <td>{{reportData?.DISTANCE_UNPROCESSED || 'N / A'}}</td>
             </tr>
           </tbody>
         </table>
@@ -46,11 +49,11 @@
           </thead>
           <tbody>
             <tr>
-              <td>{{reportData?.EINOVOICE_ARCHIVE}}</td>
-              <td>{{reportData?.EINOVOICE_AVSAP}}</td>
-              <td>{{reportData?.EINOVOICE_MDSAP}}</td>
-              <td>{{reportData?.EINOVOICE_IENABLE}}</td>
-              <td>{{reportData?.EINOVOICE_MISSING}}</td>
+              <td>{{reportData?.EINOVOICE_ARCHIVE || 'N / A'}}</td>
+              <td>{{reportData?.EINOVOICE_AVSAP || 'N / A'}}</td>
+              <td>{{reportData?.EINOVOICE_MDSAP || 'N / A'}}</td>
+              <td>{{reportData?.EINOVOICE_IENABLE || 'N / A'}}</td>
+              <td>{{reportData?.EINOVOICE_MISSING || 'N / A'}}</td>
             </tr>
           </tbody>
         </table>
@@ -72,11 +75,11 @@
           </thead>
           <tbody>
             <tr>
-              <td>{{reportData?.EWAYBILL_ARCHIVE}}</td>
-              <td>{{reportData?.EWAYBILL_AVSAP}}</td>
-              <td>{{reportData?.EWAYBILL_MDSAP}}</td>
-              <td>{{reportData?.EWAYBILL_IENABLE}}</td>
-              <td>{{reportData?.EWAYBILL_MISSING}}</td>
+              <td>{{reportData?.EWAYBILL_ARCHIVE || 'N / A'}}</td>
+              <td>{{reportData?.EWAYBILL_AVSAP || 'N / A'}}</td>
+              <td>{{reportData?.EWAYBILL_MDSAP || 'N / A'}}</td>
+              <td>{{reportData?.EWAYBILL_IENABLE || 'N / A'}}</td>
+              <td>{{reportData?.EWAYBILL_MISSING || 'N / A'}}</td>
             </tr>
           </tbody>
         </table>
@@ -98,11 +101,11 @@
           </thead>
           <tbody>
             <tr>
-              <td>{{reportData?.OUT_ARCHIVE}}</td>
-              <td>{{reportData?.OUT_AVSAP}}</td>
-              <td>{{reportData?.OUT_MDSAP}}</td>
-              <td>{{reportData?.OUT_IENABLE}}</td>
-              <td>{{reportData?.OUT_MISSING}}</td>
+              <td>{{reportData?.OUT_ARCHIVE || 'N / A'}}</td>
+              <td>{{reportData?.OUT_AVSAP || 'N / A'}}</td>
+              <td>{{reportData?.OUT_MDSAP || 'N / A'}}</td>
+              <td>{{reportData?.OUT_IENABLE || 'N / A'}}</td>
+              <td>{{reportData?.OUT_MISSING || 'N / A'}}</td>
             </tr>
           </tbody>
         </table>
@@ -130,17 +133,17 @@
           </thead>
           <tbody>
             <tr>
-              <td>{{reportData?.SFTP_ARCHIVE}}</td>
-              <td>{{reportData?.SFTP_INBOT}}</td>
-              <td>{{reportData?.SFTP_OUT_EINVOICE}}</td>
-              <td>{{reportData?.SFTP_OUT_EWAYBILL}}</td>
-              <td>{{reportData?.SFTP_AVSAP}}</td>
-              <td>{{reportData?.SFTP_MDSAP}}</td>
-              <td>{{reportData?.SFTP_IENABLE}}</td>
-              <td>{{reportData?.SFTP_MISSING}}</td>
-              <td>{{reportData?.SFTP_MISSING_DISTANCE_SIZE}}</td>
-              <td>{{reportData?.SFTP_MISSING_EINVOICE_SIZE}}</td>
-              <td>{{reportData?.SFTP_MISSING_EWAYBILL_SIZE}}</td>
+              <td>{{reportData?.SFTP_ARCHIVE || 'N / A'}}</td>
+              <td>{{reportData?.SFTP_INBOT || 'N / A'}}</td>
+              <td>{{reportData?.SFTP_OUT_EINVOICE || 'N / A'}}</td>
+              <td>{{reportData?.SFTP_OUT_EWAYBILL || 'N / A'}}</td>
+              <td>{{reportData?.SFTP_AVSAP || 'N / A'}}</td>
+              <td>{{reportData?.SFTP_MDSAP || 'N / A'}}</td>
+              <td>{{reportData?.SFTP_IENABLE || 'N / A'}}</td>
+              <td>{{reportData?.SFTP_MISSING || 'N / A'}}</td>
+              <td>{{reportData?.SFTP_MISSING_DISTANCE_SIZE || 'N / A'}}</td>
+              <td>{{reportData?.SFTP_MISSING_EINVOICE_SIZE || 'N / A'}}</td>
+              <td>{{reportData?.SFTP_MISSING_EWAYBILL_SIZE || 'N / A'}}</td>
             </tr>
           </tbody>
         </table>

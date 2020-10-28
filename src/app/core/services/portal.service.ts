@@ -15,8 +15,8 @@ export class PortalService {
             `&end=${params.end}&page=${params.index}&size=${params.size}`);
     }
 
-    fetchReport() {
-        return this.httpService.get(`api/abbott/report`);
+    fetchReport(flag: boolean) {
+        return this.httpService.get(`api/abbott/report?refresh=${flag}`);
     }
 
     downloadReport() {
@@ -33,5 +33,9 @@ export class PortalService {
 
     checkProgress() {
         return this.httpService.get(`api/abbott/check-progress`);
+    }
+
+    delay(ms: number) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 }
