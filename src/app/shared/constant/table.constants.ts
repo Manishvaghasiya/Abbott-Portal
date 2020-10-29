@@ -10,4 +10,4 @@ export const FOLDER_TYPE = ['All', 'ARCHIVE/BOT', 'ARCHIVE/BotResponse', 'IN/Bot
 
 export const FOLDER_NAME = ['All', 'Einvoice', 'Ewaybill', 'SFTP', 'Out', 'Distance'];
 
-export const FILTER_PARAM = ['All', 'FILE_CREATED_AT', 'FILE_MODIFIED_AT', 'FILE_ACCESSED_AT'];
+export const FILTER_PARAM = ['FILE_CREATED_AT', 'FILE_MODIFIED_AT', 'FILE_ACCESSED_AT'];

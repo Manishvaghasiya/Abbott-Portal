@@ -57,7 +57,7 @@ export class PortalComponent implements OnInit {
         this.paginationService.verifySizeParams(params.size) : this.pageSize;
       this.filterFolderName = this.params.folder_name = (params.folder_name ? params.folder_name : 'All');
       this.filterFolderType = this.params.folder_type = (params.folder_type ? params.folder_type : 'All');
-      this.params.param = params.param ? params.param : '';
+      this.params.param = params.param ? params.param : 'FILE_CREATED_AT';
       this.params.start = params.start ? params.start : '';
       this.params.end = params.end ? params.end : '';
       this.getPortalDataCheck();
@@ -68,7 +68,7 @@ export class PortalComponent implements OnInit {
 
   ngOnInit(): void {
     this.dateFilterForm = this.formBuilder.group({
-      param: new FormControl('All', [Validators.required]),
+      param: new FormControl('FILE_CREATED_AT', [Validators.required]),
       start: new FormControl('', [Validators.required]),
       end: new FormControl('', [Validators.required])
     });
@@ -143,7 +143,7 @@ export class PortalComponent implements OnInit {
       return;
     }
 
-    this.params.param = this.dateFilterForm.value.param === 'All' ? '' : this.dateFilterForm.value.param;
+    this.params.param = this.dateFilterForm.value.param;
     this.params.start = this.datepipe.transform(this.dateFilterForm.value.start, 'yyyy-MM-dd HH:mm:ss') + '';
     this.params.end = this.datepipe.transform(this.dateFilterForm.value.end, 'yyyy-MM-dd HH:mm:ss') + '';
 
@@ -152,7 +152,7 @@ export class PortalComponent implements OnInit {
 
   resetDateFilter() {
     this.dateFilterForm.reset();
-    this.dateFilterForm.controls.param.setValue('All');
+    this.dateFilterForm.controls.param.setValue('FILE_CREATED_AT');
     this.params.param = '';
     this.params.start = '';
     this.params.end = '';
