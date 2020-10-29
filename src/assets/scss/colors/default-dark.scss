@@ -29,11 +29,33 @@ $topbar-alt: #398bf7;
                 color:$themecolor;
             }
         }
+
+        .navbar-light .navbar-nav .nav-item.active{
+            a{
+                &:before{
+                    position: absolute;
+                    top: -23px;
+                    content: "";
+                    width: 100%;
+                    height: 3px;
+                    background-color: #e99339;
+                    @media screen and (max-width: 992px) {
+                        display: none;
+                    }
+                }
+            }
+        }
+
         .navbar-light .navbar-nav .nav-item > {
             a.nav-link {
                 color: #fff;
-                padding-left: 40px;
+                padding: 0;
+                margin: 0 20px;
                 font-weight: 500;
+                position: relative;
+                @media screen and (max-width: 992px) {
+                    padding: 10px 5px;
+                }
                 &:hover,
                 &:focus {
                     color: #e99339;

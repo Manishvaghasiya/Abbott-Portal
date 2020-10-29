@@ -10,12 +10,12 @@ html {
     right: auto;
 }
 button.btn.btn-primary {
-    background-color: transparent;
-    color: #243b55;
-    border: 1px solid #243b55;
+    background-color: #595959;
+    color: #fff;
+    border: 1px solid #595959;
     border-radius: 5px;
     text-transform: capitalize;
-    box-shadow: none;
+    box-shadow: none !important;
     font-weight: 600;
     padding: 8px 20px 6px;
     transition: all 0.5s ease;
@@ -28,20 +28,20 @@ button.btn.btn-primary:active {
     color: #fff;
 }
 button.btn.btn-secondary {
-    color: #e99339;
-    background-color: transparent !important;
+    color: #fff;
+    background-color: #e99339 !important;
     border: 1px solid #e99339 !important;
     border-radius: 5px;
     text-transform: capitalize;
     box-shadow: none !important;
     transition: all 0.5s ease;
     padding: 8px 20px 6px;
-    font-size: 12px;
+    font-weight: 600;
 }
 button.btn.btn-secondary:hover {
-    background-color: #243b55 !important;
+    background-color: #595959 !important;
     box-shadow: none !important;
-    border: 1px solid #243b55 !important;
+    border: 1px solid #595959 !important;
     color: #fff;
 }
 .btn[disabled] {
@@ -511,7 +511,7 @@ body .defaultdark .sidebar-nav ul li a:hover i {
 }
 
 .action-main-links li a:hover {
-    color: #ff8200;
+    color: #e99339;
 }
 .filter-wrap {
     margin-top: -58px;
@@ -854,4 +854,10 @@ color: #fff;
     border-radius: 8px;
     box-shadow: 0 1px 15px 1px rgba(62,57,107,.07);
     border: solid 1px #eee;
+}
+body .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
+    background-color: #595959;
+}
+header button.navbar-toggler {
+    background-color: #e99339;
 }

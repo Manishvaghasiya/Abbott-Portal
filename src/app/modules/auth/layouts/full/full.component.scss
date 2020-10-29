@@ -16,7 +16,9 @@
 }
 
 .topbar{
-    background: #243b55;
+    background: #595959;
+    -webkit-box-shadow: 0 0 11px rgba(0,0,0,0.13);
+    box-shadow: 0 0 11px rgba(0,0,0,0.13);
     .navbar-brand{
         img{
             width: 220px;
