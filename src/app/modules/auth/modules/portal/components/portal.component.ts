@@ -26,7 +26,6 @@ export class PortalComponent implements OnInit {
   filterByFileNameForm: FormGroup;
   filterFolderName = 'All';
   filterFolderType = 'All';
-  filterFileName = 'All';
 
   // tabuler var
   dataSource = new MatTableDataSource();
@@ -157,6 +156,12 @@ export class PortalComponent implements OnInit {
     this.params.param = '';
     this.params.start = '';
     this.params.end = '';
+    this.getPortalDataCheck();
+  }
+
+  resetFileFilter() {
+    this.filterByFileNameForm.reset();
+    this.filterByFileNameForm.controls.filename.setValue(' ');
     this.getPortalDataCheck();
   }
 
