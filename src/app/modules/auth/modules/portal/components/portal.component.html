@@ -11,11 +11,13 @@
             </div>
             <div class="col-md-5 col-lg-7 d-flex align-items-center justify-content-end">
                 <div class="mr-auto">
-                    <button [matMenuTriggerFor]="filter" class="btn btn-primary btn-md" aria-label="Example icon-button with a menu">
+                    <button [matMenuTriggerFor]="filter" class="btn btn-primary btn-md"
+                        aria-label="Example icon-button with a menu">
                         <i class="fas fa-filter"></i>
-                      </button>
-                      <mat-menu #filter="matMenu" class="dropdown-menu-md">
-                        <form (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" class="form-bg-style">
+                    </button>
+                    <mat-menu #filter="matMenu" class="dropdown-menu-md">
+                        <form (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"
+                            class="form-bg-style">
                             <div class="form-group">
                                 <label>Select Folder Name</label>
                                 <select class="form-control" name="filterFilderName"
@@ -34,38 +36,43 @@
                                 </select>
                             </div>
                         </form>
-                      </mat-menu>
-    
-    
-                     <button [matMenuTriggerFor]="file" class="btn btn-primary btn-md ml-3" aria-label="Example icon-button with a menu">
+                    </mat-menu>
+
+                    <button [matMenuTriggerFor]="file" class="btn btn-primary btn-md ml-3"
+                        aria-label="Example icon-button with a menu">
                         <i class="fas fa-file-alt"></i>
-                      </button>
-                      <mat-menu #file="matMenu" class="dropdown-menu-md">
-                        <form (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" class="form-bg-style">
+                    </button>
+                    <mat-menu #file="matMenu" class="dropdown-menu-md">
+                        <form (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"
+                            class="form-bg-style">
                             <div class="form-group">
                                 <label>Search File</label>
                                 <form [formGroup]="filterByFileNameForm" novalidate>
                                     <div class="form-group" (click)="$event.stopPropagation(); false;">
                                         <input type="text" class="form-control ng-pristine ng-invalid ng-touched"
                                             formControlName="filename" placeholder="ex. file.csv">
-                                        <a href="javascript:void(0);"
-                                            [ngClass]="{disabled: filterByFileNameForm.value.filename == 'All' || !filterByFileNameForm.value.filename.trim() }"
-                                            (click)="filterByFileName(filterByFileNameForm.value.filename)"
-                                            class="btn-search-icon">
-                                            <i class="fas fa-search"></i>
-                                        </a>
+                                    </div>
+                                    <div class="text-right">
+                                        <button class="btn btn-primary btn-sm py-1 mr-3"
+                                            [disabled]="filterByFileNameForm.value.filename == 'All' || !filterByFileNameForm.value.filename.trim()"
+                                            (click)="filterByFileName(filterByFileNameForm.value.filename); $event.stopPropagation();">
+                                            Apply</button>
+                                        <button class="btn btn-secondary btn-sm py-1"
+                                            [disabled]="!filterByFileNameForm.value.filename.trim()"
+                                            (click)="resetFileFilter(); $event.stopPropagation();">Reset</button>
                                     </div>
                                 </form>
                             </div>
                         </form>
-                      </mat-menu>
-    
-    
-                      <button [matMenuTriggerFor]="calendar" class="btn btn-primary btn-md ml-3" aria-label="Example icon-button with a menu">
+                    </mat-menu>
+
+                    <button [matMenuTriggerFor]="calendar" class="btn btn-primary btn-md ml-3"
+                        aria-label="Example icon-button with a menu">
                         <i class="fas fa-calendar-check"></i>
-                      </button>
-                      <mat-menu #calendar="matMenu" class="dropdown-menu-md">
-                        <form (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()" class="form-bg-style" [formGroup]="dateFilterForm" novalidate>
+                    </button>
+                    <mat-menu #calendar="matMenu" class="dropdown-menu-md">
+                        <form (click)="$event.stopPropagation()" (keydown)="$event.stopPropagation()"
+                            class="form-bg-style" [formGroup]="dateFilterForm" novalidate>
                             <div class="form-group">
                                 <label>Select Param</label>
                                 <div class="cal-input">
@@ -105,7 +112,7 @@
                                     (click)="resetDateFilter();">Reset</button>
                             </div>
                         </form>
-                      </mat-menu>
+                    </mat-menu>
                 </div>
                 <ul class="list-unstyled d-flex m-0 justify-content-end action-main-links">
                     <li (click)="getData()"><a href="javascript:void(0);"><i class="fas fa-sync-alt"></i> Refresh
