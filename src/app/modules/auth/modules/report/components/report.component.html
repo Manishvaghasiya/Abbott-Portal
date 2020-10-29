@@ -18,14 +18,17 @@
 <div class="card mb-3">
   <div class="card-body">
 
-    <h4 class="card-title"><span class="lstick"></span>Distance Calculator</h4>
+    <h4 class="card-title" title="view data of distance folder" (click)="redirectToPortal('All', 'Distance')"><span
+        class="lstick"></span> Distance Calculator
+    </h4>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Processed Till Now</th>
-              <th>To be Processed</th>
+              <th (click)="redirectToPortal('Archive', 'Distance')">Processed
+                Till Now</th>
+              <th (click)="redirectToPortal('BotUnprocessedFile', 'Distance')">To be Processed</th>
             </tr>
           </thead>
           <tbody>
@@ -38,17 +41,21 @@
       </div>
     </div>
 
-    <h4 class="card-title"><span class="lstick"></span>Reverse Integration Einvoice</h4>
+    <h4 class="card-title" title="view data of einvoice folder" (click)="redirectToPortal('All', 'Einvoice')"><span
+        class="lstick"></span> Reverse Integration
+      Einvoice</h4>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Processed Till Now</th>
-              <th>avsap</th>
-              <th>mdsap</th>
-              <th>ienable</th>
-              <th>missing</th>
+              <th (click)="redirectToPortal('Archive', 'Einvoice')">Processed
+                Till Now</th>
+              <th (click)="redirectToPortal('avsap', 'Einvoice')">avsap</th>
+              <th (click)="redirectToPortal('mdsap', 'Einvoice')">mdsap</th>
+              <th (click)="redirectToPortal('ienable', 'Einvoice')">ienable</th>
+              <th (click)="redirectToPortal('missing', 'Einvoice')">missing</th>
+              <!-- <th (click)="redirectToPortal('mismatch', 'Einvoice')">mismatch</th> -->
             </tr>
           </thead>
           <tbody>
@@ -58,23 +65,27 @@
               <td>{{reportData?.EINOVOICE_MDSAP || '0'}}</td>
               <td>{{reportData?.EINOVOICE_IENABLE || '0'}}</td>
               <td>{{reportData?.EINOVOICE_MISSING || '0'}}</td>
+              <!-- <td>{{reportData?.EINOVOICE_MISMATCH || '0'}}</td> -->
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <h4 class="card-title"><span class="lstick"></span>Reverse Integration EWayBill</h4>
+    <h4 class="card-title" title="view data of ewaybill folder" (click)="redirectToPortal('All', 'Ewaybill')"><span
+        class="lstick"></span> Reverse Integration
+      EWayBill</h4>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Processed Till Now</th>
-              <th>avsap</th>
-              <th>mdsap</th>
-              <th>ienable</th>
-              <th>missing</th>
+              <th (click)="redirectToPortal('Archive', 'Ewaybill')">Processed Till Now</th>
+              <th (click)="redirectToPortal('avsap', 'Ewaybill')">avsap</th>
+              <th (click)="redirectToPortal('mdsap', 'Ewaybill')">mdsap</th>
+              <th (click)="redirectToPortal('ienable', 'Ewaybill')">ienable</th>
+              <th (click)="redirectToPortal('missing', 'Ewaybill')">missing</th>
+              <!-- <th (click)="redirectToPortal('mismatch', 'Ewaybill')">mismatch</th> -->
             </tr>
           </thead>
           <tbody>
@@ -84,23 +95,27 @@
               <td>{{reportData?.EWAYBILL_MDSAP || '0'}}</td>
               <td>{{reportData?.EWAYBILL_IENABLE || '0'}}</td>
               <td>{{reportData?.EWAYBILL_MISSING || '0'}}</td>
+              <!-- <td>{{reportData?.EWAYBILL_MISMATCH || '0'}}</td> -->
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <h4 class="card-title"><span class="lstick"></span>Reverse Integration Out</h4>
+    <h4 class="card-title" title="view data of out folder" (click)="redirectToPortal('All', 'Out')">
+      <span class="lstick"></span> Reverse Integration
+      Out</h4>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Processed Till Now</th>
-              <th>avsap</th>
-              <th>mdsap</th>
-              <th>ienable</th>
-              <th>missing</th>
+              <th (click)="redirectToPortal('Archive', 'Out')">Processed Till Now</th>
+              <th (click)="redirectToPortal('avsap', 'Out')">avsap</th>
+              <th (click)="redirectToPortal('mdsap', 'Out')">mdsap</th>
+              <th (click)="redirectToPortal('ienable', 'Out')">ienable</th>
+              <th (click)="redirectToPortal('missing', 'Out')">missing</th>
+              <!-- <th (click)="redirectToPortal('mismatch', 'Out')">mismatch</th> -->
             </tr>
           </thead>
           <tbody>
@@ -110,26 +125,31 @@
               <td>{{reportData?.OUT_MDSAP || '0'}}</td>
               <td>{{reportData?.OUT_IENABLE || '0'}}</td>
               <td>{{reportData?.OUT_MISSING || '0'}}</td>
+              <!-- <td>{{reportData?.OUT_MISMATCH || '0'}}</td> -->
             </tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <h4 class="card-title"><span class="lstick"></span>Files Pending In SFTP</h4>
+    <h4 class="card-title" title="view data of SFTP folder" (click)="redirectToPortal('All', 'SFTP')">
+      <span class="lstick"></span> Files Pending In
+      SFTP</h4>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>ARCHIVE/BOT</th>
-              <th>IN/Bot</th>
-              <th>OUT / EInvoice Details</th>
-              <th>OUT / EWayBill Details</th>
-              <th>avsap</th>
-              <th>mdsap</th>
-              <th>ienable</th>
-              <th>missing</th>
+              <th (click)="redirectToPortal('ARCHIVE/BOT', 'SFTP')">Archive/Bot</th>
+              <th (click)="redirectToPortal('IN/Bot', 'SFTP')">In/Bot</th>
+              <th (click)="redirectToPortal('ARCHIVE/BotResponse', 'SFTP')">Archive/BotResponse</th>
+              <th (click)="redirectToPortal('OUT/E-InvoiceDetails', 'SFTP')">Out/E-InvoiceDetails</th>
+              <th (click)="redirectToPortal('OUT/EwayBillDetails', 'SFTP')">Out/EwayBillDetails</th>
+              <th (click)="redirectToPortal('OUT/avsap', 'SFTP')">avsap</th>
+              <th (click)="redirectToPortal('OUT/mdsap', 'SFTP')">mdsap</th>
+              <th (click)="redirectToPortal('OUT/ienable', 'SFTP')">ienable</th>
+              <!-- <th (click)="redirectToPortal('mismatch', 'SFTP')">mismatch</th> -->
+              <th (click)="redirectToPortal('OUT/missing', 'SFTP')">missing</th>
               <th>distance file size missing</th>
               <th>einvoice file size missing</th>
               <th>ewaybill file size missing</th>
@@ -139,11 +159,13 @@
             <tr>
               <td>{{reportData?.SFTP_ARCHIVE || '0'}}</td>
               <td>{{reportData?.SFTP_INBOT || '0'}}</td>
+              <td>{{reportData?.SFTP_BOT_RESPONSE || '0'}}</td>
               <td>{{reportData?.SFTP_OUT_EINVOICE || '0'}}</td>
               <td>{{reportData?.SFTP_OUT_EWAYBILL || '0'}}</td>
               <td>{{reportData?.SFTP_AVSAP || '0'}}</td>
               <td>{{reportData?.SFTP_MDSAP || '0'}}</td>
               <td>{{reportData?.SFTP_IENABLE || '0'}}</td>
+              <!-- <td>{{reportData?.SFTP_MISMATCH || '0'}}</td> -->
               <td>{{reportData?.SFTP_MISSING || '0'}}</td>
               <td>{{reportData?.SFTP_MISSING_DISTANCE_SIZE || '0'}}</td>
               <td>{{reportData?.SFTP_MISSING_EINVOICE_SIZE || '0'}}</td>

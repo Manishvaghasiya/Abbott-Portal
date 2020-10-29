@@ -15,7 +15,7 @@ export class HttpClientService {
 
   getFile(url: string) {
     url = this.updateUrl(url);
-    window.open(url, null);
+    window.open(url, '_self');
   }
 
   post(url: string, body: any, headers?: any, params?: any, options?: IHttpOptions) {

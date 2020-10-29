@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportData } from '../../../../../models/portal';
 import { AuthService, PortalService, ToastService } from '../../../../../core/services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-report',
@@ -16,6 +17,7 @@ export class ReportComponent implements OnInit {
   constructor(
     private portalService: PortalService,
     private authService: AuthService,
+    private router: Router,
     private toastService: ToastService
   ) { }
 
@@ -61,6 +63,10 @@ export class ReportComponent implements OnInit {
     }, error => {
       this.toastService.showDanger(error.error.detail);
     });
+  }
+
+  redirectToPortal(type?: string, name?: string) {
+    this.router.navigate(['/portal'], { queryParams: { folder_type: type, folder_name: name }, queryParamsHandling: 'merge' });
   }
 
   getPortalDataCheck(flag?: boolean) {

@@ -17,7 +17,7 @@ export class SkipLoginGuard implements CanActivate {
     Promise<boolean | import('@angular/router').UrlTree> {
     const token = this.authService.getAuthToken();
     if (token !== null) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/portal']);
       return false;
     } else {
       return true;

@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
     this.loginService.loginUser(userModel).subscribe((response: any) => {
       this.authService.setAuthToken(response.id_token);
       this.toastService.showSuccess('Welcome To AbbottWhiz');
-      this.router.navigate(['./dashboard']);
+      this.router.navigate(['./portal']);
     }, error => {
       if (error.status === 0) {
         this.router.navigate(['500']);
