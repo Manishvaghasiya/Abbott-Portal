@@ -34,9 +34,9 @@ export class PortalComponent implements OnInit {
   filterText: string;
 
   // pagination var
-  pageSizeOptions: number[] = [100, 500, 1000, 10000];
+  pageSizeOptions: number[] = [5, 10, 20, 50, 100];
   pageIndex = 0;
-  pageSize = 100;
+  pageSize = 5;
   possibleIndex: number;
   totalDataLength: number;
   currentDataLength: number;
