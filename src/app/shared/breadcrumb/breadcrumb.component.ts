@@ -16,7 +16,7 @@ export class BreadcrumbComponent implements OnInit {
 	@Input() layout;
 	pageInfo;
 	username: string;
-	lastUpdated: Date;
+	lastUpdated: any;
 
 	constructor(
 		private router: Router,
