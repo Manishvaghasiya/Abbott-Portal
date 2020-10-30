@@ -26,6 +26,7 @@ export class PortalComponent implements OnInit {
   filterByFileNameForm: FormGroup;
   filterFolderName = 'All';
   filterFolderType = 'All';
+  progressFlag = false;
 
   // tabuler var
   dataSource = new MatTableDataSource();
@@ -185,12 +186,15 @@ export class PortalComponent implements OnInit {
   }
 
   getPortalDataCheck() {
+    this.progressFlag = false;
     this.portalService.checkProgress().subscribe(async (response: any) => {
       if (response.body.data) {
-        this.getPortalDataCheck();
+        this.progressFlag = true;
         await this.portalService.delay(5000);
+        this.getPortalDataCheck();
       } else {
         this.getData();
+        this.progressFlag = false;
       }
     }, error => {
       this.toastService.showDanger(error.error.detail);

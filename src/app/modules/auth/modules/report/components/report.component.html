@@ -1,7 +1,7 @@
 <div class="card mb-3 top-less">
   <div class="card-body">
     <div class="row align-items-center">
-      <div class="col-md-12 d-flex justify-content-end">
+      <div class="col-md-12 d-flex justify-content-end" *ngIf="!progressFlag; else portalDataProgressModel">
         <ul class="list-unstyled d-flex m-0 justify-content-end action-main-links">
           <li (click)="downloadReport();"><a href="javascript:void(0);"><i class="fas fa-download"></i> Download
               Report
@@ -150,9 +150,9 @@
               <th (click)="redirectToPortal('OUT/ienable', 'SFTP')">ienable</th>
               <!-- <th (click)="redirectToPortal('mismatch', 'SFTP')">mismatch</th> -->
               <th (click)="redirectToPortal('OUT/missing', 'SFTP')">missing</th>
-              <th>distance file size missing</th>
-              <th>einvoice file size missing</th>
-              <th>ewaybill file size missing</th>
+              <th (click)="redirectToPortal('missing size', 'Distance')">distance file size missing</th>
+              <th (click)="redirectToPortal('missing size', 'Einvoice')">einvoice file size missing</th>
+              <th (click)="redirectToPortal('missing size', 'Ewaybill')">ewaybill file size missing</th>
             </tr>
           </thead>
           <tbody>
@@ -178,3 +178,17 @@
   </div>
 
 </div>
+
+<ng-template #portalDataProgressModel>
+  <div class="aw-common-modal">
+    <div class="modal-dialog m-auto">
+      <div class="modal-content border-0">
+        <div class="modal-body text-center">
+          <div class="text-center">
+            <i class="fa fa-refresh fa-spin"></i> Data is being updated. Please wait ...
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

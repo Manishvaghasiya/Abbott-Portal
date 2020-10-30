@@ -9,10 +9,10 @@ const routes: Routes = [
       {
         path: '',
         data: {
-          title: 'Portal',
+          title: 'Abbott Portal',
           urls: [
-            { title: 'Portal', url: 'portal' },
-            { title: 'Portal' }
+            { title: 'Abbott Portal', url: 'portal' },
+            { title: 'Abbott Portal' }
           ]
         },
         component: PortalComponent

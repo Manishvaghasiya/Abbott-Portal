@@ -13,6 +13,7 @@ export class ReportComponent implements OnInit {
 
   reportData: ReportData;
   disableFlag = false;
+  progressFlag = false;
 
   constructor(
     private portalService: PortalService,
@@ -53,11 +54,14 @@ export class ReportComponent implements OnInit {
   }
 
   downloadReport() {
+    this.progressFlag = false;
     this.portalService.checkProgress().subscribe(async (response: any) => {
       if (response.body.data) {
-        this.getPortalDataCheck();
+        this.progressFlag = true;
         await this.portalService.delay(5000);
+        this.downloadReport();
       } else {
+        this.progressFlag = false;
         this.portalService.downloadReport();
       }
     }, error => {
@@ -70,11 +74,14 @@ export class ReportComponent implements OnInit {
   }
 
   getPortalDataCheck(flag?: boolean) {
+    this.progressFlag = false;
     this.portalService.checkProgress().subscribe(async (response: any) => {
       if (response.body.data) {
-        this.getPortalDataCheck(flag);
+        this.progressFlag = true;
         await this.portalService.delay(5000);
+        this.getPortalDataCheck(flag);
       } else {
+        this.progressFlag = false;
         this.getReport(flag);
       }
     }, error => {

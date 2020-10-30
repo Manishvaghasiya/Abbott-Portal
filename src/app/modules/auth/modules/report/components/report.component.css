@@ -15,3 +15,7 @@ h4,
 th {
     cursor: pointer;
 }
+
+.aw-common-modal{
+    width: 100%;
+}

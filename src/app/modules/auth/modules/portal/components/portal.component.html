@@ -1,6 +1,6 @@
 <div class="card mb-3 top-less">
     <div class="card-body">
-        <div class="row align-items-center">
+        <div class="row align-items-center" *ngIf="!progressFlag; else portalDataProgressModel">
             <div class="col-md-7 col-lg-5 mb-3 mb-md-0 d-flex pr-md-1">
                 <div class="w-100">
                     <div class="input-group input-group-sm">
@@ -181,7 +181,7 @@
             <td mat-cell *matCellDef="let element">{{element?.server}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="actions">
+        <!-- <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef class="text-center">Actions </th>
             <td mat-cell *matCellDef="let element">
                 <ul class="list-unstyled action-links">
@@ -198,7 +198,7 @@
                     </li>
                 </ul>
             </td>
-        </ng-container>
+        </ng-container> -->
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
@@ -256,24 +256,14 @@
         Back</button> -->
 </div>
 
-<ng-template #deleteTemplateModal>
+<ng-template #portalDataProgressModel>
     <div class="aw-common-modal">
         <div class="modal-dialog m-auto">
             <div class="modal-content border-0">
-                <div class="modal-header">
-                    <h5 class="mb-0"><i class="fas fa-trash-alt"></i> Delete Template</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" matDialogClose>
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
+                <div class="modal-body text-center">
                     <div>
-                        Are you sure you want to delete this template ?
+                        <i class="fa fa-refresh fa-spin"></i> Data is being updated. Please wait ...
                     </div>
-                </div>
-                <div class="modal-footer justify-content-end">
-                    <button type="button" class="btn btn-primary btn-sm">Delete</button>
-                    <button type="button" class="btn btn-secondary btn-sm" matDialogClose>Cancel</button>
                 </div>
             </div>
         </div>

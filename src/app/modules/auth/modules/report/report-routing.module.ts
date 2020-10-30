@@ -9,10 +9,10 @@ const routes: Routes = [
       {
         path: '',
         data: {
-          title: 'Report',
+          title: 'Abbott Report',
           urls: [
-            { title: 'Report', url: 'report' },
-            { title: 'Report' }
+            { title: 'Abbott Report', url: 'report' },
+            { title: 'Abbott Report' }
           ]
         },
         component: ReportComponent
