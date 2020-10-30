@@ -789,13 +789,11 @@ a.color-grey {
     }
 }
 
-
-
-.navbar-brand img {   
+.navbar-brand img {
     width: 220px;
 }
-.topbar .navbar-nav .nav-item a{
-color: #fff;
+.topbar .navbar-nav .nav-item a {
+    color: #fff;
 }
 @media (max-width: 991px) {
     .topbar .navbar-collapse .navbar-collapse {
@@ -813,12 +811,18 @@ color: #fff;
     margin-left: 26px;
     min-width: calc(100% + 28px) !important;
 }
-.filter-dropdown-single{
+.filter-dropdown-single {
     margin-top: 31px !important;
     margin-left: 0px;
 }
 
-.mat-checkbox-checked .mat-checkbox-background {background: #243b55;}
+.hidden {
+    display: none;
+}
+
+.mat-checkbox-checked .mat-checkbox-background {
+    background: #243b55;
+}
 
 .mat-checkbox .mat-checkbox-input {
     visibility: hidden;
@@ -827,15 +831,15 @@ color: #fff;
 .cdk-overlay-pane {
     max-width: inherit !important;
 }
-.dropdown.dropdown-custom .dropdown-menu-md{
+.dropdown.dropdown-custom .dropdown-menu-md {
     min-width: 250px;
     padding: 15px;
 }
-.dropdown.dropdown-custom .dropdown-menu-lg{
+.dropdown.dropdown-custom .dropdown-menu-lg {
     min-width: 300px;
     padding: 15px;
 }
-.dropdown.dropdown-custom .btn:after{
+.dropdown.dropdown-custom .btn:after {
     display: none;
 }
 .btn.btn-md {
@@ -847,12 +851,12 @@ color: #fff;
     right: 12px;
     cursor: pointer;
 }
-.form-bg-style{
+.form-bg-style {
     padding: 15px;
     background-color: #fff;
     margin-top: -8px;
     border-radius: 8px;
-    box-shadow: 0 1px 15px 1px rgba(62,57,107,.07);
+    box-shadow: 0 1px 15px 1px rgba(62, 57, 107, 0.07);
     border: solid 1px #eee;
 }
 body .owl-dt-calendar-table .owl-dt-calendar-cell-selected {

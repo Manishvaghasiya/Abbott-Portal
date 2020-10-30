@@ -5,7 +5,7 @@
     <div class="col-md-3 align-self-center">
         <h4 class="text-themecolor m-b-0">{{pageInfo?.title}} </h4>
     </div>
-    <div class="col-md-9 text-right">
+    <div class="col-md-9 text-right" *ngIf="lastUpdated">
         <h6 class="m-b-0">
             <b style="color: #6a6a6a;">Last Updated :</b> {{lastUpdated}}</h6>
     </div>
