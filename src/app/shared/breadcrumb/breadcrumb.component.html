@@ -3,7 +3,11 @@
 <!-- ============================================================== -->
 <div class="row page-titles">
     <div class="col-md-9 align-self-center">
-        <h4 class="text-themecolor m-b-0">{{pageInfo?.title}} {{username}}</h4>
+        <h4 class="text-themecolor m-b-0">{{pageInfo?.title}} </h4>
+    </div>
+    <div class="col-md-3 text-right">
+        <h6 class="m-b-0">
+            {{pageInfo?.title == 'Abbott Portal' ? ('Last Updated : ' + (lastUpdated | date : 'medium')) : ''}}</h6>
     </div>
     <div class="col-md-3">
         <!-- <div class="search-area w-100">

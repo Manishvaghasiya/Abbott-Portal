@@ -38,4 +38,8 @@ export class PortalService {
     delay(ms: number) {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+
+    getLastUpdatedDate() {
+        return this.httpService.get(`api/abbott/info`);
+    }
 }

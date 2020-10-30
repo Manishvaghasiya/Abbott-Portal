@@ -11,11 +11,11 @@
     background: #f4f6f9;
 }
 
-h4,
+h6,
 th {
     cursor: pointer;
 }
 
-.aw-common-modal{
+.aw-common-modal {
     width: 100%;
 }
