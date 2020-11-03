@@ -10,9 +10,9 @@ html {
     right: auto;
 }
 button.btn.btn-primary {
-    background-color: #595959;
-    color: #fff;
-    border: 1px solid #595959;
+    background-color: transparent;
+    color: #000327;
+    border: 1px solid #000327;
     border-radius: 5px;
     text-transform: capitalize;
     box-shadow: none !important;
@@ -28,8 +28,8 @@ button.btn.btn-primary:active {
     color: #fff;
 }
 button.btn.btn-secondary {
-    color: #fff;
-    background-color: #e99339 !important;
+    color: #e99339;
+    background-color: transparent !important;
     border: 1px solid #e99339 !important;
     border-radius: 5px;
     text-transform: capitalize;
@@ -39,9 +39,9 @@ button.btn.btn-secondary {
     font-weight: 600;
 }
 button.btn.btn-secondary:hover {
-    background-color: #595959 !important;
+    background-color:#000327 !important;
     box-shadow: none !important;
-    border: 1px solid #595959 !important;
+    border: 1px solid#000327 !important;
     color: #fff;
 }
 .btn[disabled] {
@@ -375,7 +375,8 @@ ul.list-unstyled.action-links li a:hover {
     max-width: 100%;
 }
 body .page-titles .text-themecolor {
-    color: #6a6a6a !important;
+    color: #0a1652 !important;
+    letter-spacing: .5px;
     font-weight: 600;
     font-size: 20px;
     border-left: solid 3px #e99339;
@@ -860,8 +861,13 @@ a.color-grey {
     border: solid 1px #eee;
 }
 body .owl-dt-calendar-table .owl-dt-calendar-cell-selected {
-    background-color: #595959;
+    background-color: #000327;
 }
 header button.navbar-toggler {
     background-color: #e99339;
+}
+.card-title-small{
+    color: #0a1652;
+    letter-spacing: .5px;
+    font-weight: 600;
 }
