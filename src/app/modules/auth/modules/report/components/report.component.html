@@ -7,9 +7,9 @@
                 class="fas fa-download"></i> Download
               Report
             </a></li>
-          <li (click)="getPortalDataCheck(true);" [ngClass]="{disabled: disableFlag}"><a href="javascript:void(0);"><i
+          <!-- <li (click)="getPortalDataCheck(true);" [ngClass]="{disabled: disableFlag}"><a href="javascript:void(0);"><i
                 class="fas fa-sync-alt"></i>
-              Refresh</a></li>
+              Refresh</a></li> -->
         </ul>
       </div>
     </div>
@@ -20,16 +20,15 @@
   <div class="card-body">
 
     <h6 class="card-title" title="view data of distance folder" (click)="redirectToPortal('All', 'Distance')"><span
-        class="lstick"></span> Distance Calculator
+        class="lstick"></span> {{'Distance Calculator' | uppercase }}
     </h6>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th (click)="redirectToPortal('Archive', 'Distance')">Processed
-                Till Now</th>
-              <th (click)="redirectToPortal('BotUnprocessedFile', 'Distance')">To be Processed</th>
+              <th (click)="redirectToPortal('Archive', 'Distance')">{{'Processed_Till_Now' | uppercase }}</th>
+              <th (click)="redirectToPortal('BotUnprocessedFile', 'Distance')">{{'To_be_Processed' | uppercase }}</th>
             </tr>
           </thead>
           <tbody>
@@ -43,19 +42,17 @@
     </div>
 
     <h6 class="card-title" title="view data of einvoice folder" (click)="redirectToPortal('All', 'Einvoice')"><span
-        class="lstick"></span> Reverse Integration
-      Einvoice</h6>
+        class="lstick"></span> {{'Reverse Integration Einvoice' | uppercase }}</h6>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th (click)="redirectToPortal('Archive', 'Einvoice')">Processed
-                Till Now</th>
-              <th (click)="redirectToPortal('avsap', 'Einvoice')">avsap</th>
-              <th (click)="redirectToPortal('mdsap', 'Einvoice')">mdsap</th>
-              <th (click)="redirectToPortal('ienable', 'Einvoice')">ienable</th>
-              <th (click)="redirectToPortal('missing', 'Einvoice')">missing</th>
+              <th (click)="redirectToPortal('Archive', 'Einvoice')">{{'Processed_Till_Now' | uppercase }}</th>
+              <th (click)="redirectToPortal('avsap', 'Einvoice')">{{'avsap' | uppercase }}</th>
+              <th (click)="redirectToPortal('mdsap', 'Einvoice')">{{'mdsap' | uppercase }}</th>
+              <th (click)="redirectToPortal('ienable', 'Einvoice')">{{'ienable' | uppercase }}</th>
+              <th (click)="redirectToPortal('missing', 'Einvoice')">{{'missing' | uppercase }}</th>
               <!-- <th (click)="redirectToPortal('mismatch', 'Einvoice')">mismatch</th> -->
             </tr>
           </thead>
@@ -74,18 +71,17 @@
     </div>
 
     <h6 class="card-title" title="view data of ewaybill folder" (click)="redirectToPortal('All', 'Ewaybill')"><span
-        class="lstick"></span> Reverse Integration
-      EWayBill</h6>
+        class="lstick"></span> {{'Reverse Integration EWayBill' | uppercase }}</h6>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th (click)="redirectToPortal('Archive', 'Ewaybill')">Processed Till Now</th>
-              <th (click)="redirectToPortal('avsap', 'Ewaybill')">avsap</th>
-              <th (click)="redirectToPortal('mdsap', 'Ewaybill')">mdsap</th>
-              <th (click)="redirectToPortal('ienable', 'Ewaybill')">ienable</th>
-              <th (click)="redirectToPortal('missing', 'Ewaybill')">missing</th>
+              <th (click)="redirectToPortal('Archive', 'Ewaybill')">{{'Processed_Till_Now' | uppercase }}</th>
+              <th (click)="redirectToPortal('avsap', 'Ewaybill')">{{'avsap' | uppercase }}</th>
+              <th (click)="redirectToPortal('mdsap', 'Ewaybill')">{{'mdsap' | uppercase }}</th>
+              <th (click)="redirectToPortal('ienable', 'Ewaybill')">{{'ienable' | uppercase }}</th>
+              <th (click)="redirectToPortal('missing', 'Ewaybill')">{{'missing' | uppercase }}</th>
               <!-- <th (click)="redirectToPortal('mismatch', 'Ewaybill')">mismatch</th> -->
             </tr>
           </thead>
@@ -104,18 +100,17 @@
     </div>
 
     <h6 class="card-title" title="view data of out folder" (click)="redirectToPortal('All', 'Out')">
-      <span class="lstick"></span> Reverse Integration
-      Out</h6>
+      <span class="lstick"></span> {{'Reverse Integration Out' | uppercase }}</h6>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th (click)="redirectToPortal('Archive', 'Out')">Processed Till Now</th>
-              <th (click)="redirectToPortal('avsap', 'Out')">avsap</th>
-              <th (click)="redirectToPortal('mdsap', 'Out')">mdsap</th>
-              <th (click)="redirectToPortal('ienable', 'Out')">ienable</th>
-              <th (click)="redirectToPortal('missing', 'Out')">missing</th>
+              <th (click)="redirectToPortal('Archive', 'Out')">{{'Processed_Till_Now' | uppercase }}</th>
+              <th (click)="redirectToPortal('avsap', 'Out')">{{'avsap' | uppercase }}</th>
+              <th (click)="redirectToPortal('mdsap', 'Out')">{{'mdsap' | uppercase }}</th>
+              <th (click)="redirectToPortal('ienable', 'Out')">{{'ienable' | uppercase }}</th>
+              <th (click)="redirectToPortal('missing', 'Out')">{{'missing' | uppercase }}</th>
               <!-- <th (click)="redirectToPortal('mismatch', 'Out')">mismatch</th> -->
             </tr>
           </thead>
@@ -134,26 +129,29 @@
     </div>
 
     <h6 class="card-title" title="view data of SFTP folder" (click)="redirectToPortal('All', 'SFTP')">
-      <span class="lstick"></span> Files Pending In
-      SFTP</h6>
+      <span class="lstick"></span> {{'Files Pending In SFTP' | uppercase }}</h6>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th (click)="redirectToPortal('ARCHIVE/BOT', 'SFTP')">Archive/Bot</th>
-              <th (click)="redirectToPortal('IN/Bot', 'SFTP')">In/Bot</th>
-              <th (click)="redirectToPortal('ARCHIVE/BotResponse', 'SFTP')">Archive/BotResponse</th>
-              <th (click)="redirectToPortal('OUT/E-InvoiceDetails', 'SFTP')">Out/E-InvoiceDetails</th>
-              <th (click)="redirectToPortal('OUT/EwayBillDetails', 'SFTP')">Out/EwayBillDetails</th>
-              <th (click)="redirectToPortal('OUT/avsap', 'SFTP')">avsap</th>
-              <th (click)="redirectToPortal('OUT/mdsap', 'SFTP')">mdsap</th>
-              <th (click)="redirectToPortal('OUT/ienable', 'SFTP')">ienable</th>
+              <th (click)="redirectToPortal('ARCHIVE/BOT', 'SFTP')">{{'Archive/Bot' | uppercase }}</th>
+              <th (click)="redirectToPortal('IN/Bot', 'SFTP')">{{'In/Bot' | uppercase }}</th>
+              <th (click)="redirectToPortal('ARCHIVE/BotResponse', 'SFTP')">{{'Archive/BotResponse' | uppercase }}</th>
+              <th (click)="redirectToPortal('OUT/E-InvoiceDetails', 'SFTP')">{{'Out/E-InvoiceDetails' | uppercase }}
+              </th>
+              <th (click)="redirectToPortal('OUT/EwayBillDetails', 'SFTP')">{{'Out/EwayBillDetails' | uppercase }}</th>
+              <th (click)="redirectToPortal('OUT/avsap', 'SFTP')">{{'avsap' | uppercase }}</th>
+              <th (click)="redirectToPortal('OUT/mdsap', 'SFTP')">{{'mdsap' | uppercase }}</th>
+              <th (click)="redirectToPortal('OUT/ienable', 'SFTP')">{{'ienable' | uppercase }}</th>
               <!-- <th (click)="redirectToPortal('mismatch', 'SFTP')">mismatch</th> -->
-              <th (click)="redirectToPortal('OUT/missing', 'SFTP')">missing</th>
-              <th (click)="redirectToPortal('missing size', 'Distance')">distance file size missing</th>
-              <th (click)="redirectToPortal('missing size', 'Einvoice')">einvoice file size missing</th>
-              <th (click)="redirectToPortal('missing size', 'Ewaybill')">ewaybill file size missing</th>
+              <th (click)="redirectToPortal('OUT/missing', 'SFTP')">{{'missing' | uppercase }}</th>
+              <th (click)="redirectToPortal('missing size', 'Distance')">{{'distance_file_size_missing' | uppercase }}
+              </th>
+              <th (click)="redirectToPortal('missing size', 'Einvoice')">{{'einvoice_file_size_missing' | uppercase }}
+              </th>
+              <th (click)="redirectToPortal('missing size', 'Ewaybill')">{{'ewaybill_file_size_missing' | uppercase }}
+              </th>
             </tr>
           </thead>
           <tbody>
