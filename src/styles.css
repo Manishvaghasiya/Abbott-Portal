@@ -898,3 +898,8 @@ header button.navbar-toggler {
 .table-dark-blue .table-custom-align tr td{
     text-align: left !important;
 }
+.table-dark-blue.table-responsive table.table-custom-align thead tr th{
+    background-color: #000327;
+    color: #fff;
+    border-top: solid 3px #e99339;
+}
