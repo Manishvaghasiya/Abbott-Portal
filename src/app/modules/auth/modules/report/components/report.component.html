@@ -18,8 +18,8 @@
 
 <div class="card mb-3">
   <div class="card-body">
-    <h6 class="card-title card-title-small" title="view data of distance folder" (click)="redirectToPortal('All', 'Distance')"><span
-        class="lstick"></span> {{'Distance Calculator' | uppercase }}
+    <h6 class="card-title card-title-small" title="view data of distance folder"
+      (click)="redirectToPortal('All', 'Distance')"><span class="lstick"></span> {{'Distance Calculator' | uppercase }}
     </h6>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
@@ -39,8 +39,9 @@
         </table>
       </div>
     </div>
-    <h6 class="card-title card-title-small" title="view data of einvoice folder" (click)="redirectToPortal('All', 'Einvoice')"><span
-        class="lstick"></span> {{'Reverse Integration Einvoice' | uppercase }}</h6>
+    <h6 class="card-title card-title-small" title="view data of einvoice folder"
+      (click)="redirectToPortal('All', 'Einvoice')"><span class="lstick"></span>
+      {{'Reverse Integration Einvoice' | uppercase }}</h6>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
@@ -68,8 +69,9 @@
       </div>
     </div>
 
-    <h6 class="card-title card-title-small" title="view data of ewaybill folder" (click)="redirectToPortal('All', 'Ewaybill')"><span
-        class="lstick"></span> {{'Reverse Integration EWayBill' | uppercase }}</h6>
+    <h6 class="card-title card-title-small" title="view data of ewaybill folder"
+      (click)="redirectToPortal('All', 'Ewaybill')"><span class="lstick"></span>
+      {{'Reverse Integration EWayBill' | uppercase }}</h6>
     <div class="p-3 mb-4 light-bg">
       <div class="table-responsive">
         <table class="table table-bordered">
@@ -143,7 +145,7 @@
               <th (click)="redirectToPortal('OUT/mdsap', 'SFTP')">{{'mdsap' | uppercase }}</th>
               <th (click)="redirectToPortal('OUT/ienable', 'SFTP')">{{'ienable' | uppercase }}</th>
               <!-- <th (click)="redirectToPortal('mismatch', 'SFTP')">mismatch</th> -->
-              <th (click)="redirectToPortal('OUT/missing', 'SFTP')">{{'missing' | uppercase }}</th>
+              <th (click)="redirectToPortal('missing', 'Distance')">{{'missing' | uppercase }}</th>
               <th (click)="redirectToPortal('missing size', 'Distance')">{{'distance_file_size_missing' | uppercase }}
               </th>
               <th (click)="redirectToPortal('missing size', 'Einvoice')">{{'einvoice_file_size_missing' | uppercase }}
