@@ -122,7 +122,9 @@
         </div>
     </div>
 </div>
-<div class="table-responsive table-dark-blue" [hidden]="!dataSource?.data?.length">
+<div class="card" [hidden]="!dataSource?.data?.length">
+    <div class="card-body">
+<div class="table-responsive table-dark-blue">
     <table class="table table-bordered table-custom-align" mat-table [dataSource]="dataSource" matSort>
 
         <ng-container matColumnDef="id">
@@ -202,7 +204,8 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 </div>
-
+</div>
+</div>
 <div class="pagination-wrap" [hidden]="!dataSource?.data?.length">
     <div class="row">
         <div class="col-md-4">
