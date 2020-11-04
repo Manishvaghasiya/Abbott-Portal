@@ -895,3 +895,6 @@ header button.navbar-toggler {
 .table-dark-blue.table-responsive table.table tbody tr {
     border-bottom: 0;
 }
+.table-dark-blue .table-custom-align tr td{
+    text-align: left !important;
+}

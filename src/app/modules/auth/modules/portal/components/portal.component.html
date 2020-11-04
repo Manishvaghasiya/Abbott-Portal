@@ -122,9 +122,8 @@
         </div>
     </div>
 </div>
-
-<div class="table-responsive" [hidden]="!dataSource?.data?.length">
-    <table class="table table-bordered table-striped" mat-table [dataSource]="dataSource" matSort>
+<div class="table-responsive table-dark-blue" [hidden]="!dataSource?.data?.length">
+    <table class="table table-bordered table-custom-align" mat-table [dataSource]="dataSource" matSort>
 
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>id</th>
